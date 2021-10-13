@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
@@ -13,29 +13,113 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css" />
     <title>Task 1</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <div class="logo">
-            <img src="../img/logo_transparent.png" alt="">
-        </div>
-        <h1 class="header-title"><b>National records in the marathon</b> </h1>
+      <div class="logo">
+        <img src="../img/logo_transparent.png" alt="" />
+      </div>
+      <h1 class="header-title"><b>National records in the marathon</b></h1>
     </div>
     <div class="menu">
-        <ul>
-            <li><a href="../pages/home.html">home</a></li>
-            <li><a href="../pages/table.html">table</a></li>
-            <li><a href="../pages/about.html">about</a></li>
-        </ul>
+      <ul>
+        <li><a href="../index.html">home</a></li>
+        <li><a href="../pages/table.html">table</a></li>
+        <li><a href="../pages/about.html">about</a></li>
+      </ul>
+    </div>
+    <div class="tables">
+      <div class="tables-container">
+        <form action="" class="table-color">
+          <label for="default">
+            <input type="radio" name="style" id="default" checked /> default
+          </label>
+          <label for="dark">
+            <input type="radio" name="style" id="dark" /> dark
+          </label>
+          <label for="colored">
+            <input type="radio" name="style" id="colored" /> colored
+          </label>
+        </form>
+        <form action="" class="table-sort">
+          <label for="normal">
+            <input type="radio" name="sort" id="normal" checked /> normal
+          </label>
+          <label for="reversed">
+            <input type="radio" name="sort" id="reversed" /> reversed
+          </label>
+        </form>
+        <h3 class="tables-title">
+          The following table contains marathon records within each world
+          region.
+        </h3>
+        <div class="man-container">
+          <h2 class="man-title">Man's</h2>
+          <div class="man-table table-style">
+            <div class="head-row row">
+              <div class="string">Region</div>
+              <div class="string">Country/Territory</div>
+              <div class="string">Time</div>
+              <div class="string">Athlete</div>
+              <div class="string">Date</div>
+            </div>
+            <div class="table-container">
+              <div class="row">
+                <div class="string">Africa</div>
+                <div class="string">Kenya</div>
+                <div class="string">2:01:39</div>
+                <div class="string">Eliud Kipchoge</div>
+                <div class="string">16 Sep 2018</div>
+              </div>
+              <div class="row">
+                <div class="string">Asia</div>
+                <div class="string">Bahrain</div>
+                <div class="string">2:04:43</div>
+                <div class="string">El Hassan El-Abbassi</div>
+                <div class="string">2 Dec 2018</div>
+              </div>
+              <div class="row">
+                <div class="string">Europe</div>
+                <div class="string">Turkey</div>
+                <div class="string">2:04:16</div>
+                <div class="string">Kaan Kigen Özbilen</div>
+                <div class="string">1 Dec 2019</div>
+              </div>
+              <div class="row">
+                <div class="string">North/Central America</div>
+                <div class="string">United States</div>
+                <div class="string">2:05:38</div>
+                <div class="string">Khalid Khannouchi</div>
+                <div class="string">14 Apr 2002</div>
+              </div>
+              <div class="row">
+                <div class="string">Oceania</div>
+                <div class="string">Australia</div>
+                <div class="string">2:07:51</div>
+                <div class="string">Robert de Castella</div>
+                <div class="string">21 Apr 1986</div>
+              </div>
+              <div class="row">
+                <div class="string">South America</div>
+                <div class="string">Brazil</div>
+                <div class="string">2:06:05</div>
+                <div class="string">Ronaldo da Costa</div>
+                <div class="string">20 Sep 1998</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="footer">
-        <div ><time class="time"></time></div>
-        <div class="author"><a href="https://github.com/Podexus23">Anton Serovski</a></div>
-        <div class="version">0.0.1a</div>
+      <div><time class="time"></time></div>
+      <div class="author">
+        <a href="https://github.com/Podexus23">Anton Serovski</a>
+      </div>
+      <div class="version">0.0.1a</div>
     </div>
     <script src="../main.js"></script>
-
-</body>
+  </body>
 </html>
