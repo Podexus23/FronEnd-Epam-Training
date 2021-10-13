@@ -9,12 +9,19 @@ pre {
 }
 .header {
   display: flex;
+  align-items: center;
 }
 .logo {
-  width: 10%;
+  width: 8%;
+  transition: .5s all;
+}
+.logo:hover img{
+  opacity: 0.5;
+  transition: .5s all;
 }
 .logo img {
   width: -webkit-fill-available;
+  transition: .5s all;
 }
 .contacts ul li {
   list-style-type: none;
