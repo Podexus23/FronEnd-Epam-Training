@@ -4,6 +4,7 @@ function getDate () {
    let year = date.getFullYear();
    let month = date.getMonth();
    let day = date.getDate();
+   
    if (month < 10) month = `0${month}`
    if (day < 10) day = `0${day}`
    document.querySelector('.time').innerHTML = `${day}.${month}.${year}`;
@@ -28,10 +29,11 @@ function sortingTable () {
 }
 sortingTable();
 
-function coloriseTable() {
+//change table style by removing and setting previously made classes
+function colorizeTable() {
    let radioColor = document.querySelector('.table-color')
    let table = document.querySelector('.table-style')
-//document.elm.style.border = "3px solid #FF0000";
+
    radioColor.addEventListener('click', (e) => {
       if(e.target == document.querySelector('#dark')) {
          table.removeAttribute('class')
@@ -49,4 +51,4 @@ function coloriseTable() {
          console.log('default-color')
       }})
 }
-coloriseTable();
+colorizeTable();
