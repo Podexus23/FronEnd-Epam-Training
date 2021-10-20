@@ -1,80 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../style.css" />
-    <title>National records in the marathon</title>
-    <meta
-      name="description"
-      content="The marathon is a long-distance foot race with a distance of
-        42.195 kilometers, usually run as a road race"
-    />
+<!-- add Open Graph(og)protocol -->
+<html lang="en" prefix="og: https://ogp.me/ns#">
 
-    <!-- Facebook Meta Tags -->
-    <meta
-      property="og:url"
-      content="https://podexus23.github.io/FronEnd-Epam-Training/task1/"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="National records in the marathon" />
-    <meta
-      property="og:description"
-      content="The marathon is a long-distance foot race with a distance of
-        42.195 kilometers, usually run as a road race"
-    />
-    <meta
-      property="og:image"
-      content="https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <title>National records in the marathon</title>
+  <meta name="description" content="The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race" />
 
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content="podexus23.github.io" />
-    <meta
-      property="twitter:url"
-      content="https://podexus23.github.io/FronEnd-Epam-Training/task1/"
-    />
-    <meta name="twitter:title" content="National records in the marathon" />
-    <meta
-      name="twitter:description"
-      content="The marathon is a long-distance foot race with a distance of
-        42.195 kilometers, usually run as a road race"
-    />
-    <meta
-      name="twitter:image"
-      content="https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg"
-    />
-  </head>
-  <body>
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://podexus23.github.io/FronEnd-Epam-Training/task1/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="National records in the marathon" />
+  <meta property="og:description" content="The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race" />
+  <meta property="og:image"
+    content="https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg" />
+</head>
+
+<body>
+  <!-- Add microdata tags according Schema.org -->
+  <div itemscope itemtype="https://schema.org/WebPage" class="wrapper">
     <div class="header">
-      <div class="logo">
-        <a href="../index.html"
-          ><img src="../img/logo_transparent.png" alt="logo"
-        /></a>
+      <!-- Defined primary image of page -->
+      <div class="logo" itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
+        <a href="../index.html"><img itemprop="url" src="../img/logo_transparent.png" alt="logo" /></a>
       </div>
-      <h1 class="header-title">National records in the marathon</h1>
+      <!-- Defined name of page -->
+      <h1 class="header-title" itemprop="name">
+        National records in the marathon
+      </h1>
     </div>
     <div class="menu">
-      <ul>
-        <li><a href="../index.html">home</a></li>
-        <li><a href="../pages/table.html">table</a></li>
-        <li><a href="../pages/about.html">about</a></li>
+      <!-- Defined navigation list of page -->
+      <ul itemprop="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="../index.html">
+            <span itemprop="name">home</span></a>
+          <meta itemprop="position" content="1">
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="../pages/table.html">
+            <span itemprop="name">table</span></a>
+          <meta itemprop="position" content="2">
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a itemprop="item" href="../pages/about.html">
+            <span itemprop="name">about</span></a>
+          <meta itemprop="position" content="3">
+        </li>
       </ul>
     </div>
-    <!-- paragraph 8: add table with values -->
-    <!-- implement different styles of table -->
-    <!-- for changing styles use Form and Input tags -->
     <div class="tables">
       <div class="tables-container">
         <form action="" class="table-color">
@@ -100,8 +82,8 @@
           The following table contains marathon records within each world
           region.
         </h3>
-        <div class="man-container">
-          <h2 class="man-title">Man's</h2>
+        <div class="man-container" itemscope itemtype="https://schema.org/Table">
+          <h2 class="man-title" itemprop="about">Men</h2>
           <div class="man-table table-style">
             <div class="head-row row">
               <div class="string">Region</div>
@@ -159,12 +141,17 @@
       </div>
     </div>
     <div class="footer">
+      <!-- function getDate calculate and add time  -->
       <div><time class="time"></time></div>
-      <div class="author">
-        <a href="https://github.com/Podexus23">Anton Serovski</a>
+      <!-- Note type Person to describe this block -->
+      <div class="author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+        <a itemprop="url" href="https://github.com/Podexus23"><span itemprop="name">Anton
+            Serovski</span></a>
       </div>
-      <div class="version">0.0.1a</div>
+      <!-- Defined version of site -->
+      <div class="version" itemprop="version">0.0.1b</div>
     </div>
     <script src="../main.js"></script>
-  </body>
+</body>
+
 </html>

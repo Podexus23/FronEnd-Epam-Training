@@ -1,111 +1,99 @@
 <!DOCTYPE html>
-<!-- add Open Graph(og)protocol -->
+<!-- add Open Graph(og) protocol -->
 <html lang="en" prefix="og: https://ogp.me/ns#">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>National records in the marathon</title>
-    <meta
-      name="description"
-      content="The marathon is a long-distance foot race with a distance of
-        42.195 kilometers, usually run as a road race"
-    />
+    <meta name="description" content="The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race" />
 
     <!-- Facebook Meta Tags -->
-    <meta
-      property="og:url"
-      content="https://podexus23.github.io/FronEnd-Epam-Training/task1/"
-    />
+    <meta property="og:url" content="https://podexus23.github.io/FronEnd-Epam-Training/task1/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="National records in the marathon" />
-    <meta
-      property="og:description"
-      content="The marathon is a long-distance foot race with a distance of
-        42.195 kilometers, usually run as a road race"
-    />
-    <meta
-      property="og:image"
-      content="https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg"
-    />
+    <meta property="og:description" content="The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race" />
+    <meta property="og:image"
+        content="https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg" />
+</head>
 
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content="podexus23.github.io" />
-    <meta
-      property="twitter:url"
-      content="https://podexus23.github.io/FronEnd-Epam-Training/task1/"
-    />
-    <meta name="twitter:title" content="National records in the marathon" />
-    <meta
-      name="twitter:description"
-      content="The marathon is a long-distance foot race with a distance of
-        42.195 kilometers, usually run as a road race"
-    />
-    <meta
-      name="twitter:image"
-      content="https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg"
-    />
-  </head>
-  <body>
-    <!-- According paragraph 2 header, footer and menu are placed at left side-->
-    <!-- paragraph 3: header, footer and menu are the same on every page -->
-    <div class="header">
-      <!-- paragraph 5: header has thematic description with graphic elements and formatted text -->
-      <div class="logo">
-        <a href="#"><img src="./img/logo_transparent.png" alt="logo" /></a>
-      </div>
-      <h1 class="header-title">National records in the marathon</h1>
-    </div>
-    <!-- paragraph 4: menu has 3 items -->
-    <div class="menu">
-      <ul>
-        <li><a href="#">home</a></li>
-        <li><a href="./pages/table.html">table</a></li>
-        <li><a href="./pages/about.html">about</a></li>
-      </ul>
-    </div>
-    <!-- paragraph 7: add more information about site theme, with differently formatted text by HTML tags -->
-    <div class="home-content">
-      <p>
-        The <b>marathon</b> is a long-distance foot race with a distance of
-        <mark>42.195</mark> kilometers, usually run as a road race
-      </p>
-      <p>
-        The <b>marathon</b> can be completed by running or with a run/walk
-        strategy. More than 800 marathons are held throughout the world each
-        year, with the vast majority of competitors being recreational athletes,
-        as larger marathons can have <b>tens of thousands</b> of participants.
-      </p>
-      <p>
-        The marathon was one of the original modern Olympic events in
-        <mark>1896</mark> . The distance did not become standardized until
-        <mark>1921</mark>.
-      </p>
-      <p>
-        The distance is also included in the
-        <i>World Athletics Championships</i> , which began in <mark>1983</mark>.
-      </p>
-    </div>
-    <!-- paragraph 6: footer have current time, author description and version -->
-    <div class="footer">
-      <!-- function getDate calculate and add time  -->
-      <div><time class="time"></time></div>
-      <div class="author">
-        <a href="https://github.com/Podexus23">Anton Serovski</a>
-      </div>
-      <div class="version">0.0.1b</div>
-    </div>
-    <script src="main.js"></script>
-  </body>
+<body>
+    <!-- Add microdata tags according Schema.org -->
+    <div itemscope itemtype="https://schema.org/WebPage" class="wrapper">
+        <link itemprop="relatedLink" href="https://podexus23.github.io/FronEnd-Epam-Training/task1/" />
+        <div class="header">
+            <!-- Defined primary image of page -->
+            <div class="logo" itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
+                <a href="#"><img itemprop="url" src="./img/logo_transparent.png" alt="logo" /></a>
+            </div>
+            <!-- Defined name of page -->
+            <h1 class="header-title" itemprop="name">
+                National records in the marathon
+            </h1>
+        </div>
+        <div class="menu">
+            <!-- Defined navigation list of page -->
+            <ul itemprop="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="#">
+                        <span itemprop="name">home</span></a>
+                    <meta itemprop="position" content="1">
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="./pages/table.html">
+                        <span itemprop="name">table</span></a>
+                    <meta itemprop="position" content="2">
+                </li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="./pages/about.html">
+                        <span itemprop="name">about</span></a>
+                    <meta itemprop="position" content="3">
+                </li>
+            </ul>
+            <!-- Defined type Action to use such props as event and distance -->
+            <div class="home-content" itemprop="about" itemscope itemtype="https://schema.org/ExerciseAction">
+                <p>
+                    The <b itemprop="event">marathon</b> is a long-distance foot race with a distance of
+                    <mark itemprop="distance">42.195</mark> kilometers, usually run as a road race
+                </p>
+                <p>
+                    The <b>marathon</b> can be completed by running or with a run/walk
+                    strategy. More than 800 marathons are held throughout the world each
+                    year, with the vast majority of competitors being recreational
+                    athletes, as larger marathons can have <b>tens of thousands</b> of
+                    participants.
+                </p>
+                <p>
+                    The marathon was one of the original modern Olympic events in
+                    <mark>1896</mark> . The distance did not become standardized until
+                    <mark>1921</mark>.
+                </p>
+                <p>
+                    The distance is also included in the
+                    <i>World Athletics Championships</i> , which began in
+                    <mark>1983</mark>.
+                </p>
+            </div>
+            <div class="footer">
+                <!-- function getDate calculate and add time  -->
+                <div><time class="time"></time></div>
+                <!-- Note type Person to describe this block -->
+                <div class="author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <a itemprop="url" href="https://github.com/Podexus23"><span itemprop="name">Anton
+                            Serovski</span></a>
+                </div>
+                <!-- Defined version of site -->
+                <div class="version" itemprop="version">0.0.1b</div>
+            </div>
+            <script src="main.js"></script>
+        </div>
+</body>
+
 </html>
