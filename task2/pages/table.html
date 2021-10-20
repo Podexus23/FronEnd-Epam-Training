@@ -27,7 +27,7 @@
 <body>
   <!-- Add microdata tags according Schema.org -->
   <div itemscope itemtype="https://schema.org/WebPage" class="wrapper">
-    <div class="header">
+    <header class="header">
       <!-- Defined primary image of page -->
       <div class="logo" itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
         <a href="../index.html"><img itemprop="url" src="../img/logo_transparent.png" alt="logo" /></a>
@@ -36,8 +36,8 @@
       <h1 class="header-title" itemprop="name">
         National records in the marathon
       </h1>
-    </div>
-    <div class="menu">
+    </header>
+    <nav>
       <!-- Defined navigation list of page -->
       <ul itemprop="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -56,10 +56,10 @@
           <meta itemprop="position" content="3">
         </li>
       </ul>
-    </div>
-    <div class="tables">
-      <div class="tables-container">
-        <form action="" class="table-color">
+    </nav>
+    <main class="tables">
+      <section class="tables-container">
+        <form class="table-color">
           <label for="default">
             <input type="radio" name="style" id="default" checked /> default
           </label>
@@ -70,7 +70,7 @@
             <input type="radio" name="style" id="colored" /> colored
           </label>
         </form>
-        <form action="" class="table-sort">
+        <form class="table-sort">
           <label for="normal">
             <input type="radio" name="sort" id="normal" checked /> normal
           </label>
@@ -83,7 +83,7 @@
           region.
         </h3>
         <!-- Defined table as a main page content -->
-        <div class="man-container" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Table">
+        <article class="man-container" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/Table">
           <h2 class="man-title" itemprop="name" content="marathon records within each world
           region">Men</h2>
           <div class="man-table table-style">
@@ -141,10 +141,10 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer">
+        </article>
+      </section>
+    </main>
+    <footer>
       <!-- function getDate calculate and add time  -->
       <div><time class="time"></time></div>
       <!-- Note type Person to describe this block -->
@@ -154,8 +154,9 @@
       </div>
       <!-- Defined version of site -->
       <div class="version" itemprop="version">0.0.1b</div>
-    </div>
+    </footer>
     <script src="../main.js"></script>
+  </div>
 </body>
 
 </html>

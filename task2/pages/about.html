@@ -27,7 +27,7 @@
 <body>
   <!-- Add microdata tags according Schema.org -->
   <div itemscope itemtype="https://schema.org/WebPage" class="wrapper">
-    <div class="header">
+    <header class="header">
       <!-- Defined primary image of page -->
       <div class="logo" itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
         <a href="../index.html"><img itemprop="url" src="../img/logo_transparent.png" alt="logo" /></a>
@@ -36,9 +36,9 @@
       <h1 class="header-title" itemprop="name">
         National records in the marathon
       </h1>
-    </div>
-    <div class="menu">
-      <!-- Defined navigation list of page -->
+    </header>
+    <!-- Defined navigation list of page -->
+    <nav>
       <ul itemprop="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a itemprop="item" href="../index.html">
@@ -56,9 +56,9 @@
           <meta itemprop="position" content="3">
         </li>
       </ul>
-    </div>
+    </nav>
     <!-- Defined type Person to use such props as knowsLanguage knowsAbout -->
-    <div class="content" itemprop="about" itemscope itemtype="https://schema.org/Person">
+    <main class="content" itemprop="about" itemscope itemtype="https://schema.org/Person">
       <article class="education" itemprop="knowsAbout">
         <h3>Education summary:</h3>
         <p>
@@ -103,8 +103,8 @@
           </li>
         </ul>
       </nav>
-    </div>
-    <div class="footer">
+    </main>
+    <footer>
       <!-- function getDate calculate and add time  -->
       <div><time class="time"></time></div>
       <!-- Note type Person to describe this block -->
@@ -114,7 +114,7 @@
       </div>
       <!-- Defined version of site -->
       <div class="version" itemprop="version">0.0.1b</div>
-    </div>
+    </footer>
   </div>
   <script src="../main.js"></script>
 </body>

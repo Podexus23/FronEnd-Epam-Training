@@ -27,8 +27,8 @@
 <body>
     <!-- Add microdata tags according Schema.org -->
     <div itemscope itemtype="https://schema.org/WebPage" class="wrapper">
-        <link itemprop="relatedLink" href="https://podexus23.github.io/FronEnd-Epam-Training/task1/" />
-        <div class="header">
+        <link itemprop="relatedLink" href="https://podexus23.github.io/FronEnd-Epam-Training/task2/" />
+        <header class="header">
             <!-- Defined primary image of page -->
             <div class="logo" itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
                 <a href="#"><img itemprop="url" src="./img/logo_transparent.png" alt="logo" /></a>
@@ -37,9 +37,9 @@
             <h1 class="header-title" itemprop="name">
                 National records in the marathon
             </h1>
-        </div>
-        <div class="menu">
-            <!-- Defined navigation list of page -->
+        </header>
+        <!-- Defined navigation list of page -->
+        <nav>
             <ul itemprop="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <a itemprop="item" href="#">
@@ -57,12 +57,14 @@
                     <meta itemprop="position" content="3">
                 </li>
             </ul>
+        </nav>
+        <main>
             <!-- Defined type Action to use such props as event and distance -->
-            <div class="home-content" itemprop="about" itemscope itemtype="https://schema.org/ExerciseAction">
-                <p>
+            <section class="home-content" itemprop="about" itemscope itemtype="https://schema.org/ExerciseAction">
+                <h4>
                     The <b itemprop="event">marathon</b> is a long-distance foot race with a distance of
                     <mark itemprop="distance">42.195</mark> kilometers, usually run as a road race
-                </p>
+                </h4>
                 <p>
                     The <b>marathon</b> can be completed by running or with a run/walk
                     strategy. More than 800 marathons are held throughout the world each
@@ -80,20 +82,21 @@
                     <i>World Athletics Championships</i> , which began in
                     <mark>1983</mark>.
                 </p>
+            </section>
+        </main>
+        <footer>
+            <!-- function getDate calculate and add time  -->
+            <div><time class="time"></time></div>
+            <!-- Note type Person to describe this block -->
+            <div class="author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <a itemprop="url" href="https://github.com/Podexus23"><span itemprop="name">Anton
+                        Serovski</span></a>
             </div>
-            <div class="footer">
-                <!-- function getDate calculate and add time  -->
-                <div><time class="time"></time></div>
-                <!-- Note type Person to describe this block -->
-                <div class="author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                    <a itemprop="url" href="https://github.com/Podexus23"><span itemprop="name">Anton
-                            Serovski</span></a>
-                </div>
-                <!-- Defined version of site -->
-                <div class="version" itemprop="version">0.0.1b</div>
-            </div>
-            <script src="main.js"></script>
-        </div>
+            <!-- Defined version of site -->
+            <div class="version" itemprop="version">0.0.1b</div>
+        </footer>
+        <script src="main.js"></script>
+    </div>
 </body>
 
 </html>

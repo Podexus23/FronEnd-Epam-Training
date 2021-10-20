@@ -13,15 +13,18 @@ pre {
 }
 .logo {
   width: 8%;
-  transition: .5s all;
+  transition: 0.5s all;
 }
-.logo:hover img{
+.logo:hover img {
   opacity: 0.5;
-  transition: .5s all;
+  transition: 0.5s all;
 }
 .logo img {
   width: -webkit-fill-available;
-  transition: .5s all;
+  transition: 0.5s all;
+}
+.home-content h4 {
+  font-weight: 400;
 }
 .contacts ul li {
   list-style-type: none;
@@ -76,7 +79,7 @@ pre {
   border: 5px solid black;
   color: black;
 }
-.man-table{
+.man-table {
   margin: 20px 3%;
   padding: 10px;
 }
@@ -111,8 +114,8 @@ pre {
   border: 5px solid rgb(223, 223, 223);
   color: rgb(241, 241, 241);
 }
-.table-style_colored{
+.table-style_colored {
   background-color: #bfae0f;
-    border: 5px solid rgb(233 135 0);
-    color: rgb(241, 241, 241);
+  border: 5px solid rgb(233 135 0);
+  color: rgb(241, 241, 241);
 }
