@@ -26,54 +26,54 @@
 
 <body>
   <!-- Add microdata tags according Schema.org -->
-  <div itemscope itemtype="https://schema.org/WebPage" class="wrapper">
+  <div vocab="https://schema.org/" typeof="WebPage" class="wrapper">
     <header class="header">
       <!-- Defined primary image of page -->
-      <div class="logo" itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
-        <a href="../index.html"><img itemprop="image" src="../img/logo_transparent.png" alt="logo" /></a>
+      <div class="logo" property="primaryImageOfPage" typeof="ImageObject">
+        <a href="../index.html"><img property="image" src="../img/logo_transparent.png" alt="logo" /></a>
       </div>
       <!-- Defined name of page -->
-      <h1 class="header-title" itemprop="name">
+      <h1 class="header-title" property="name">
         National records in the marathon
       </h1>
     </header>
     <!-- Defined navigation list of page -->
     <nav>
-      <ul itemprop="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a itemprop="item" href="../index.html">
-            <span itemprop="name">home</span></a>
-          <meta itemprop="position" content="1">
+      <ul property="breadcrumb" typeof="BreadcrumbList">
+        <li property="itemListElement" typeof="ListItem">
+          <a property="item" href="../index.html">
+            <span property="name">home</span></a>
+          <meta property="position" content="1">
         </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a itemprop="item" href="../pages/table.html">
-            <span itemprop="name">table</span></a>
-          <meta itemprop="position" content="2">
+        <li property="itemListElement" typeof="ListItem">
+          <a property="item" href="../pages/table.html">
+            <span property="name">table</span></a>
+          <meta property="position" content="2">
         </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a itemprop="item" href="../pages/about.html">
-            <span itemprop="name">about</span></a>
-          <meta itemprop="position" content="3">
+        <li property="itemListElement" typeof="ListItem">
+          <a property="item" href="../pages/about.html">
+            <span property="name">about</span></a>
+          <meta property="position" content="3">
         </li>
       </ul>
     </nav>
     <!-- Defined type Person to use such props as knowsLanguage knowsAbout -->
-    <main class="content" itemprop="about" itemscope itemtype="https://schema.org/Person">
-      <article class="education" itemprop="knowsAbout">
+    <main class="content" property="about" typeof="Person">
+      <article class="education" property="knowsAbout">
         <h3>Education summary:</h3>
         <p>
           Graduated from the Pavel Sukhoi State Technical University with a
           degree in power systems engineering.
         </p>
       </article>
-      <article class="language" itemprop="knowsLanguage">
+      <article class="language" property="knowsLanguage">
         <h3>Language knowledge:</h3>
         <p>According tests my english is on level <mark>Intermediate</mark>.</p>
       </article>
       <article class="skills">
         <h3>My skills:</h3>
         <p>I took several courses <br /></p>
-        <ul class="skills-list" itemprop="knowsAbout">
+        <ul class="skills-list" property="knowsAbout">
           <li>
             <a href="https://ru.code-basics.com/languages/html" class="skills-link">HTML</a>
           </li>
@@ -91,15 +91,15 @@
         <ul>
           <li>
             <img class="header-icon" src="../img/phone-icon.svg" alt="icon: phone" />
-            <a href="tel:+375293867380"><span itemprop="telephone">+375293867380</span></a>
+            <a href="tel:+375293867380"><span property="telephone">+375293867380</span></a>
           </li>
           <li>
             <img class="header-icon" src="../img/mail-icon.svg" alt="icon: mail" />
-            <a itemprop="email" href="mailto:santon23@gmail.com">You can E-mail me</a>
+            <a property="email" href="mailto:santon23@gmail.com">You can E-mail me</a>
           </li>
           <li>
             <img class="header-icon" src="../img/insta-icon.svg" alt="icon: instagram" />
-            <a itemprop="url" href="https://www.instagram.com/el_thanagor/">or write in Direct</a>
+            <a property="url" href="https://www.instagram.com/el_thanagor/">or write in Direct</a>
           </li>
         </ul>
       </nav>
@@ -108,12 +108,12 @@
       <!-- function getDate calculate and add time  -->
       <div><time class="time"></time></div>
       <!-- Note type Person to describe this block -->
-      <div class="author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-        <a itemprop="url" href="https://github.com/Podexus23"><span itemprop="name">Anton
+      <div class="author" property="author" typeof="Person">
+        <a property="url" href="https://github.com/Podexus23"><span property="name">Anton
             Serovski</span></a>
       </div>
       <!-- Defined version of site -->
-      <div class="version" itemprop="version">0.0.1b</div>
+      <div class="version" property="version">0.0.1b</div>
     </footer>
   </div>
   <script src="../main.js"></script>

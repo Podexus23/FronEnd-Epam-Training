@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <!-- add Open Graph(og) protocol -->
-<html lang="en" prefix="og: https://ogp.me/ns#">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
@@ -26,44 +25,44 @@
 
 <body>
     <!-- Add microdata tags according Schema.org -->
-    <div itemscope itemtype="https://schema.org/WebPage" class="wrapper">
-        <link itemprop="relatedLink" href="https://podexus23.github.io/FronEnd-Epam-Training/task2/" />
+    <div vocab="https://schema.org/" typeof="WebPage" class="wrapper">
+        <link property="relatedLink" href="https://podexus23.github.io/FronEnd-Epam-Training/task2/" />
         <header class="header">
             <!-- Defined primary image of page -->
-            <div class="logo" itemprop="primaryImageOfPage" itemscope itemtype="https://schema.org/ImageObject">
-                <a href="#"><img itemprop="image" src="./img/logo_transparent.png" alt="logo" /></a>
+            <div class="logo" property="primaryImageOfPage" typeof="ImageObject">
+                <a href="#"><img property="image" src="./img/logo_transparent.png" alt="logo" /></a>
             </div>
             <!-- Defined name of page -->
-            <h1 class="header-title" itemprop="name">
+            <h1 class="header-title" property="name">
                 National records in the marathon
             </h1>
         </header>
         <!-- Defined navigation list of page -->
         <nav>
-            <ul itemprop="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="#">
-                        <span itemprop="name">home</span></a>
-                    <meta itemprop="position" content="1">
+            <ul property="breadcrumb" typeof="BreadcrumbList">
+                <li property="itemListElement" typeof="ListItem">
+                    <a property="item" href="#">
+                        <span property="name">home</span></a>
+                    <meta property="position" content="1">
                 </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="./pages/table.html">
-                        <span itemprop="name">table</span></a>
-                    <meta itemprop="position" content="2">
+                <li property="itemListElement" typeof="ListItem">
+                    <a property="item" href="./pages/table.html">
+                        <span property="name">table</span></a>
+                    <meta property="position" content="2">
                 </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="./pages/about.html">
-                        <span itemprop="name">about</span></a>
-                    <meta itemprop="position" content="3">
+                <li property="itemListElement" typeof="ListItem">
+                    <a property="item" href="./pages/about.html">
+                        <span property="name">about</span></a>
+                    <meta property="position" content="3">
                 </li>
             </ul>
         </nav>
         <main>
             <!-- Defined type Action to use such props as event and distance -->
-            <section class="home-content" itemprop="about" itemscope itemtype="https://schema.org/ExerciseAction">
+            <section class="home-content" property="about" typeof="ExerciseAction">
                 <h4>
-                    The <b itemprop="event">marathon</b> is a long-distance foot race with a distance of
-                    <mark itemprop="distance">42.195</mark> kilometers, usually run as a road race
+                    The <b property="event">marathon</b> is a long-distance foot race with a distance of
+                    <mark property="distance">42.195</mark> kilometers, usually run as a road race
                 </h4>
                 <p>
                     The <b>marathon</b> can be completed by running or with a run/walk
@@ -88,12 +87,12 @@
             <!-- function getDate calculate and add time  -->
             <div><time class="time"></time></div>
             <!-- Note type Person to describe this block -->
-            <div class="author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <a itemprop="url" href="https://github.com/Podexus23"><span itemprop="name">Anton
+            <div class="author" property="author" typeof="Person">
+                <a property="url" href="https://github.com/Podexus23"><span property="name">Anton
                         Serovski</span></a>
             </div>
             <!-- Defined version of site -->
-            <div class="version" itemprop="version">0.0.1b</div>
+            <div class="version" property="version">0.0.1b</div>
         </footer>
         <script src="main.js"></script>
     </div>
