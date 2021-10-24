@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:og="http://ogp.me/ns#"
+         xmlns:rdfa="http://www.w3.org/ns/rdfa#"
+         xmlns:ns0="https://schema.org/">
+
+  <rdf:Description rdf:about="http://njh.me/">
+    <og:description xml:lang="en">The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race</og:description>
+    <og:image xml:lang="en">https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg</og:image>
+    <og:title xml:lang="en">National records in the marathon</og:title>
+    <og:type xml:lang="en">website</og:type>
+    <og:url xml:lang="en">https://podexus23.github.io/FronEnd-Epam-Training/task1/</og:url>
+    <rdfa:usesVocabulary rdf:resource="https://schema.org/"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://njh.me/#">
+    <ns0:image rdf:resource="http://njh.me/img/logo_transparent.png"/>
+  </rdf:Description>
+
+  <ns0:WebPage rdf:nodeID="genid1">
+    <ns0:about>
+      <ns0:ExerciseAction>
+        <ns0:distance xml:lang="en">42.195</ns0:distance>
+        <ns0:event xml:lang="en">marathon</ns0:event>
+      </ns0:ExerciseAction>
+    </ns0:about>
+
+    <ns0:author>
+      <ns0:Person>
+        <ns0:name xml:lang="en">Anton
+                        Serovski</ns0:name>
+        <ns0:url rdf:resource="https://github.com/Podexus23"/>
+      </ns0:Person>
+    </ns0:author>
+
+    <ns0:breadcrumb>
+      <ns0:BreadcrumbList>
+        <ns0:itemListElement>
+          <ns0:ListItem>
+            <ns0:item rdf:resource="http://njh.me/pages/table.html"/>
+            <ns0:name xml:lang="en">table</ns0:name>
+            <ns0:position xml:lang="en">2</ns0:position>
+          </ns0:ListItem>
+        </ns0:itemListElement>
+
+        <ns0:itemListElement>
+          <ns0:ListItem>
+            <ns0:item rdf:resource="http://njh.me/pages/about.html"/>
+            <ns0:name xml:lang="en">about</ns0:name>
+            <ns0:position xml:lang="en">3</ns0:position>
+          </ns0:ListItem>
+        </ns0:itemListElement>
+
+        <ns0:itemListElement>
+          <ns0:ListItem>
+            <ns0:item rdf:resource="http://njh.me/#"/>
+            <ns0:name xml:lang="en">home</ns0:name>
+            <ns0:position xml:lang="en">1</ns0:position>
+          </ns0:ListItem>
+        </ns0:itemListElement>
+
+      </ns0:BreadcrumbList>
+    </ns0:breadcrumb>
+
+    <ns0:name xml:lang="en">
+                National records in the marathon
+            </ns0:name>
+    <ns0:primaryImageOfPage>
+      <ns0:ImageObject>
+      </ns0:ImageObject>
+    </ns0:primaryImageOfPage>
+
+    <ns0:relatedLink rdf:resource="https://podexus23.github.io/FronEnd-Epam-Training/task2/"/>
+    <ns0:version xml:lang="en">0.0.1b</ns0:version>
+  </ns0:WebPage>
+
+</rdf:RDF>
