@@ -52,25 +52,28 @@
     </nav>
     <main class="tables">
       <section class="tables-container">
-        <form class="table-color">
-          <label for="default">
-            <input type="radio" name="style" id="default" checked />default
-          </label>
-          <label for="dark">
-            <input type="radio" name="style" id="dark" />dark
-          </label>
-          <label for="colored">
-            <input type="radio" name="style" id="colored" />colored
-          </label>
-        </form>
-        <form class="table-sort">
-          <label for="normal">
-            <input type="radio" name="sort" id="normal" checked />normal
-          </label>
-          <label for="reversed">
-            <input type="radio" name="sort" id="reversed" />reversed
-          </label>
-        </form>
+        <div class="table-settings-container">
+          <form class="table-color">
+            <label for="default">
+              <input type="radio" name="style" id="default" checked />default
+            </label>
+            <label for="dark">
+              <input type="radio" name="style" id="dark" />dark
+            </label>
+            <label for="colored">
+              <input type="radio" name="style" id="colored" />colored
+            </label>
+          </form>
+          <form class="table-sort">
+            <label for="normal">
+              <input type="radio" name="sort" id="normal" checked />normal
+            </label>
+            <label for="reversed">
+              <input type="radio" name="sort" id="reversed" />reversed
+            </label>
+          </form>
+        </div>
+
         <h3 class="tables-title">
           The following table contains marathon records within each world
           region.
@@ -81,7 +84,7 @@
           <div class="man-table-grid table-style">
             <div class="head-row row ">
               <div class="string">Region</div>
-              <div class="string">Country/Territory</div>
+              <div class="string">Country</div>
               <div class="string">Time</div>
               <div class="string">Athlete</div>
               <div class="string">Date</div>
@@ -110,7 +113,7 @@
               </div>
               <div class="row" property="character" typeof="Person">
                 <div class="string">North/Central America</div>
-                <div class="string" property="nationality">United States</div>
+                <div class="string" property="nationality">US</div>
                 <div class="string">2:05:38</div>
                 <div class="string" property="name">Khalid Khannouchi</div>
                 <div class="string">14 Apr 2002</div>
