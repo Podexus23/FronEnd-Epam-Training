@@ -48,6 +48,7 @@ a {
   transition: 0.5s all;
 }
 /* navigation */
+/* made navigation panel sticky for p.5 of the task */
 .main-navigation {
   position: sticky;
   width: var(--main-width);
@@ -64,7 +65,7 @@ a {
   justify-content: space-evenly;
   margin: 0;
 }
-
+/* made elements with position absolute and relative for p.4 of the task*/
 .main-navigation .nav-link {
   text-transform: capitalize;
   font-size: 1.2rem;
@@ -145,10 +146,6 @@ a {
   transition: 0.5s all;
 }
 /* table */
-.table-color {
-}
-.table-sort {
-}
 .table-settings-container {
   padding: 15px 0 0;
   display: flex;
@@ -164,32 +161,6 @@ a {
   background-color: #d7d7d7;
   border: 5px solid black;
   color: black;
-}
-.man-table {
-  margin: 20px 3%;
-  padding: 10px;
-}
-.man-table .head-row {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-}
-.man-table .row {
-  display: flex;
-  justify-content: space-between;
-}
-.man-table .string {
-  flex-basis: 20%;
-}
-.man-table .row .string:nth-child(3) {
-  flex-basis: 10%;
-}
-.man-table .row .string:nth-child(5) {
-  flex-basis: 10%;
-}
-.man-table .table-container {
-  display: flex;
-  flex-direction: column;
 }
 .table-container_reversed {
   display: flex;
@@ -215,6 +186,7 @@ a {
   max-width: 100vw;
 }
 /* grid-table */
+/* remade table for grid for p.7 of the task */
 .man-table-grid {
   display: grid;
   margin: 20px 3%;
@@ -227,12 +199,13 @@ a {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
-
 .man-table-grid .row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
+
 /* main page news block */
+/* also news-container made with grid */
 .news-container {
   width: 100%;
   max-width: var(--main-width);
@@ -295,7 +268,7 @@ a {
 .about-content {
   padding: 10px;
 }
-
+/* made changes between quarries for good display at all resolutions*/
 @media (max-width: 1024px) {
   body {
     font-size: 14px;
