@@ -2,7 +2,6 @@
   --prime-font-color: #000000;
   --main-width: 1200px;
 }
-
 * {
   box-sizing: border-box;
 }
@@ -104,18 +103,15 @@ a {
   align-items: center;
   padding: 0;
 }
-
 .contacts {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
 }
-
 .contacts ul {
   padding: 0;
   margin-bottom: 10px;
 }
-
 .contacts ul li a {
   text-decoration: none;
   color: #2a2e36;
@@ -124,7 +120,7 @@ a {
 .contacts ul li:hover a {
   text-decoration: none;
   color: #2a2e36;
-  background-color: rgb(190, 190, 190);
+  background-color: #bebebe;
 }
 .header-icon {
   height: 20px;
@@ -135,14 +131,13 @@ a {
   list-style-type: none;
   padding: 0;
 }
-
 .skills-link {
   text-decoration: none;
   color: #2a2e36;
   transition: 0.5s all;
 }
 .skills-link:hover {
-  background-color: rgb(190, 190, 190);
+  background-color: #bebebe;
   transition: 0.5s all;
 }
 /* table */
@@ -168,13 +163,13 @@ a {
 }
 .table-style_dark {
   background-color: #1d1d1d;
-  border: 5px solid rgb(223, 223, 223);
-  color: rgb(241, 241, 241);
+  border: 5px solid #dfdfdf;
+  color: #f1f1f1;
 }
 .table-style_colored {
   background-color: #bfae0f;
-  border: 5px solid rgb(233 135 0);
-  color: rgb(241, 241, 241);
+  border: 5px solid #e98700;
+  color: #f1f1f1;
 }
 /* footer */
 .footer {
@@ -203,13 +198,11 @@ a {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
-
 /* main page news block */
 /* also news-container made with grid */
 .news-container {
   width: 100%;
   max-width: var(--main-width);
-
   display: grid;
   grid-gap: 5px;
   grid-template-columns: repeat(auto-fit, minmax(300px, calc(100% / 3)));
@@ -226,14 +219,12 @@ a {
   border: 1px solid burlywood;
   background-color: rgba(100, 148, 237, 0.311);
 }
-
 .big-topic-center {
   grid-column: 2/4;
   grid-row: 3/5;
   border: 1px solid burlywood;
   background-color: rgba(100, 148, 237, 0.311);
 }
-
 .small-topic {
   background-color: rgba(100, 237, 143, 0.311);
   border: 1px solid burlywood;
@@ -242,18 +233,15 @@ a {
   background-color: rgba(225, 237, 100, 0.311);
   border: 1px solid burlywood;
 }
-
 .news-topic {
   padding: 10px;
   cursor: pointer;
   transition: 0.5s;
   position: relative;
 }
-
 .news-topic:hover {
   background-color: rgba(222, 81, 81, 0.475);
 }
-
 .news-topic_overlay {
   position: absolute;
   top: 0;
@@ -292,7 +280,6 @@ a {
     margin-bottom: 0;
   }
 }
-
 @media (max-width: 768px) {
   .big-topic-center {
     grid-column: 1 / 3;
