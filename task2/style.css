@@ -1,0 +1,121 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+h3 {
+  margin-bottom: 0px;
+}
+pre {
+  display: inline;
+}
+.header {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 8%;
+  transition: 0.5s all;
+}
+.logo:hover img {
+  opacity: 0.5;
+  transition: 0.5s all;
+}
+.logo img {
+  width: -webkit-fill-available;
+  transition: 0.5s all;
+}
+.home-content h4 {
+  font-weight: 400;
+}
+.contacts ul li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.contacts {
+  display: flex;
+  width: 400px;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.contacts ul {
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.contacts ul li a {
+  text-decoration: none;
+  color: #2a2e36;
+  transition: 0.5s all;
+}
+.contacts ul li:hover a {
+  text-decoration: none;
+  color: #2a2e36;
+  background-color: rgb(190, 190, 190);
+}
+.header-icon {
+  height: 20px;
+  width: 20px;
+  padding: 5px;
+}
+.skills-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills-link {
+  text-decoration: none;
+  color: #2a2e36;
+  transition: 0.5s all;
+}
+.skills-link:hover {
+  background-color: rgb(190, 190, 190);
+  transition: 0.5s all;
+}
+.table-style {
+  background-color: #d7d7d7;
+  border: 5px solid black;
+  color: black;
+}
+.man-table {
+  margin: 20px 3%;
+  padding: 10px;
+}
+.man-table .head-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+.man-table .row {
+  display: flex;
+  justify-content: space-between;
+}
+.man-table .string {
+  flex-basis: 20%;
+}
+.man-table .row .string:nth-child(3) {
+  flex-basis: 10%;
+}
+.man-table .row .string:nth-child(5) {
+  flex-basis: 10%;
+}
+.man-table .table-container {
+  display: flex;
+  flex-direction: column;
+}
+.table-container_reversed {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.table-style_dark {
+  background-color: #1d1d1d;
+  border: 5px solid rgb(223, 223, 223);
+  color: rgb(241, 241, 241);
+}
+.table-style_colored {
+  background-color: #bfae0f;
+  border: 5px solid rgb(233 135 0);
+  color: rgb(241, 241, 241);
+}

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfa="http://www.w3.org/ns/rdfa#"
+         xmlns:ns0="https://ogp.me/ns#"
+         xmlns:ns1="https://schema.org/">
+
+  <rdf:Description rdf:about="http://njh.me/">
+    <rdfa:usesVocabulary rdf:resource="https://schema.org/"/>
+    <ns0:description xml:lang="en">The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race</ns0:description>
+    <ns0:image xml:lang="en">https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg</ns0:image>
+    <ns0:title xml:lang="en">National records in the marathon</ns0:title>
+    <ns0:type xml:lang="en">website</ns0:type>
+    <ns0:url xml:lang="en">https://podexus23.github.io/FronEnd-Epam-Training/task1/</ns0:url>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://njh.me/index.html">
+    <ns1:image rdf:resource="http://njh.me/img/logo_transparent.png"/>
+  </rdf:Description>
+
+  <ns1:WebPage rdf:nodeID="genid1">
+    <ns1:author>
+      <ns1:Person>
+        <ns1:name xml:lang="en">Anton
+            Serovski</ns1:name>
+        <ns1:url rdf:resource="https://github.com/Podexus23"/>
+      </ns1:Person>
+    </ns1:author>
+
+    <ns1:breadcrumb>
+      <ns1:BreadcrumbList>
+        <ns1:itemListElement>
+          <ns1:ListItem>
+            <ns1:item rdf:resource="http://njh.me/pages/table.html"/>
+            <ns1:name xml:lang="en">table</ns1:name>
+            <ns1:position xml:lang="en">2</ns1:position>
+          </ns1:ListItem>
+        </ns1:itemListElement>
+
+        <ns1:itemListElement>
+          <ns1:ListItem>
+            <ns1:item rdf:resource="http://njh.me/index.html"/>
+            <ns1:name xml:lang="en">home</ns1:name>
+            <ns1:position xml:lang="en">1</ns1:position>
+          </ns1:ListItem>
+        </ns1:itemListElement>
+
+        <ns1:itemListElement>
+          <ns1:ListItem>
+            <ns1:item rdf:resource="http://njh.me/pages/about.html"/>
+            <ns1:name xml:lang="en">about</ns1:name>
+            <ns1:position xml:lang="en">3</ns1:position>
+          </ns1:ListItem>
+        </ns1:itemListElement>
+
+      </ns1:BreadcrumbList>
+    </ns1:breadcrumb>
+
+    <ns1:mainContentOfPage>
+      <ns1:Table>
+        <ns1:character>
+          <ns1:Person>
+            <ns1:name xml:lang="en">Ronaldo da Costa</ns1:name>
+            <ns1:nationality xml:lang="en">Brazil</ns1:nationality>
+          </ns1:Person>
+        </ns1:character>
+
+        <ns1:character>
+          <ns1:Person>
+            <ns1:name xml:lang="en">Kaan Kigen Özbilen</ns1:name>
+            <ns1:nationality xml:lang="en">Turkey</ns1:nationality>
+          </ns1:Person>
+        </ns1:character>
+
+        <ns1:character>
+          <ns1:Person>
+            <ns1:name xml:lang="en">Eliud Kipchoge</ns1:name>
+            <ns1:nationality xml:lang="en">Kenya</ns1:nationality>
+          </ns1:Person>
+        </ns1:character>
+
+        <ns1:character>
+          <ns1:Person>
+            <ns1:name xml:lang="en">El Hassan El-Abbassi</ns1:name>
+            <ns1:nationality xml:lang="en">Bahrain</ns1:nationality>
+          </ns1:Person>
+        </ns1:character>
+
+        <ns1:character>
+          <ns1:Person>
+            <ns1:name xml:lang="en">Khalid Khannouchi</ns1:name>
+            <ns1:nationality xml:lang="en">United States</ns1:nationality>
+          </ns1:Person>
+        </ns1:character>
+
+        <ns1:character>
+          <ns1:Person>
+            <ns1:name xml:lang="en">Robert de Castella</ns1:name>
+            <ns1:nationality xml:lang="en">Australia</ns1:nationality>
+          </ns1:Person>
+        </ns1:character>
+
+        <ns1:name xml:lang="en">marathon records within each world
+          region</ns1:name>
+      </ns1:Table>
+    </ns1:mainContentOfPage>
+
+    <ns1:name xml:lang="en">
+        National records in the marathon
+      </ns1:name>
+    <ns1:primaryImageOfPage>
+      <ns1:ImageObject>
+      </ns1:ImageObject>
+    </ns1:primaryImageOfPage>
+
+    <ns1:version xml:lang="en">0.0.1b</ns1:version>
+  </ns1:WebPage>
+
+</rdf:RDF>
