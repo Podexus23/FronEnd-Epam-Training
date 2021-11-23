@@ -1,11 +1,16 @@
+//used mixins with parameters and parametric mixin without parameter
+
 //blocks-mixin
 .topic-colors(@mainColor, @mixColor) {
+
   background-color: @mainColor;
-  border: 1px solid burlywood;
+  border: 2px solid spin(saturate(@mainColor, 40%), 10);
   transition: @transition;
 
   &:hover {
+    //here used mix color function
     background-color: mix(@mainColor, @mixColor, 10%);
+    border: 2px solid spin(saturate(@mixColor, 20%), 10);
   }
 }
 
@@ -23,7 +28,7 @@
   transition: @transition;
 }
 
-.grid {
+.grid() {
   display: grid;
   justify-items: center;
   justify-content: center;

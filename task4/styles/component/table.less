@@ -57,7 +57,14 @@
     font-size: 0.6rem;
   }
 
-  @media (max-width: 425px) {
+
+}
+
+//use shielding
+@min425: ~"(max-width: 425px)";
+
+.man-table-grid {
+  @media @min425 {
     margin: 20px 0%;
     font-size: 0.5rem;
   }
