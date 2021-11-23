@@ -1,0 +1,35 @@
+//used mixins with parameters and parametric mixin without parameter
+
+//blocks-mixin
+.topic-colors(@mainColor, @mixColor) {
+
+  background-color: @mainColor;
+  border: 2px solid spin(saturate(@mainColor, 40%), 10);
+  transition: @transition;
+
+  &:hover {
+    //here used mix color function
+    background-color: mix(@mainColor, @mixColor, 10%);
+    border: 2px solid spin(saturate(@mixColor, 20%), 10);
+  }
+}
+
+.flex(@align-items: normal, @justify-content: normal, @flex-direction: unset) {
+  display: flex;
+  align-items: @align-items;
+  justify-content: @justify-content;
+  flex-direction: @flex-direction;
+}
+
+.table-color(@background-color: #d7d7d7, @border: black, @color: black) {
+  background-color: @background-color;
+  border: 5px solid @border;
+  color: @color;
+  transition: @transition;
+}
+
+.grid() {
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+}

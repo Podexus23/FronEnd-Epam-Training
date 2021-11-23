@@ -1,0 +1,34 @@
+.skills-list 
+  list-style-type: none
+  padding: 0
+
+  .skills-link 
+    color: $prime-font-color
+    transition: $transition
+
+    &:hover 
+      background-color: $hoverbg
+    
+
+.contacts 
+  @include flex($justify-content: flex-start, $flex-direction: column)
+
+  ul 
+    padding: 0
+    margin-bottom: 10px
+
+    li 
+      list-style-type: none
+      padding: 0
+      @include flex($align-items: center)
+
+      a 
+        color: $prime-font-color
+        transition: $transition
+
+      &:hover a 
+        color: $prime-font-color
+        background-color: $hoverbg
+      
+.about-content 
+  padding: 10px
