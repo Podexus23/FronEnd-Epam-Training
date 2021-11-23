@@ -1,0 +1,41 @@
+//used mixins with parameters and parametric mixin without parameter
+@use "sass:color"
+
+//blocks-mixin
+@mixin topic-colors($mainColor, $mixColor) 
+
+  background-color: $mainColor
+  border: 2px solid color.adjust($mainColor, $saturation:40%)
+  transition: $transition
+  &:hover 
+    //here used mix color function
+    background-color: mix($mainColor, $mixColor, 10%)
+    border: 2px solid color.adjust($mixColor, $saturation:20%)
+  
+@mixin flex($align-items: normal, $justify-content: normal, $flex-direction: unset) 
+  display: flex
+  align-items: $align-items
+  justify-content: $justify-content
+  flex-direction: $flex-direction
+
+@mixin table-color($background-color: #d7d7d7, $border: black, $color: black) 
+  background-color: $background-color
+  border: 5px solid $border
+  color: $color
+  transition: $transition
+
+@mixin grid() 
+  display: grid
+  justify-items: center
+  justify-content: center
+
+//tables
+@mixin tables($color: default)
+  @if($color == default)
+    @include table-color($background-color: #d7d7d7, $border: black, $color: black)
+  
+  @else if($color == dark)
+    @include table-color($background-color: #1d1d1d, $border: rgb(223, 223, 223), $color: rgb(241, 241, 241))
+  
+  @else if($color == colored)
+    @include table-color($background-color: #bfae0f, $border: #e98700, $color: #f1f1f1)

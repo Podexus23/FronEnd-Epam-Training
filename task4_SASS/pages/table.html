@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!--* disable .css, and use .less file which compiles trough less.js -->
+  <!--* css also compiled from .less file -->
+  <link rel="stylesheet" href="../styles/styles.css" />
+  <title>National records in the marathon</title>
+
+  <meta name="description" content="The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race" />
+  <meta property="og:url" content="https://podexus23.github.io/FronEnd-Epam-Training/task1/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="National records in the marathon" />
+  <meta property="og:description" content="The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race" />
+  <meta property="og:image"
+    content="https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg" />
+</head>
+
+<body>
+  <div vocab="https://schema.org/" typeof="WebPage" class="wrapper">
+    <header class="header">
+      <div class="logo" property="primaryImageOfPage" typeof="ImageObject">
+        <a property="url" href="../index.html"><img property="image" src="../img/logo_transparent.png" alt="logo" /></a>
+      </div>
+      <h1 class="header-title" property="name">
+        National records in the marathon
+      </h1>
+    </header>
+    <nav class="main-navigation">
+      <ul property="breadcrumb" typeof="BreadcrumbList">
+        <li class="nav-link" property="itemListElement" typeof="ListItem">
+          <a property="item" href="../index.html">
+            <span property="name">home</span></a>
+          <meta property="position" content="1">
+        </li>
+        <li class="nav-link" property="itemListElement" typeof="ListItem">
+          <a property="item" href="../pages/table.html">
+            <span property="name">results table</span></a>
+          <meta property="position" content="2">
+        </li>
+        <li class="nav-link" property="itemListElement" typeof="ListItem">
+          <a property="item" href="../pages/about.html">
+            <span property="name">about us</span></a>
+          <meta property="position" content="3">
+        </li>
+      </ul>
+    </nav>
+    <main class="tables">
+      <section class="tables-container">
+        <div class="table-settings-container">
+          <form class="table-color">
+            <label for="default">
+              <input type="radio" name="style" id="default" checked />default
+            </label>
+            <label for="dark">
+              <input type="radio" name="style" id="dark" />dark
+            </label>
+            <label for="colored">
+              <input type="radio" name="style" id="colored" />colored
+            </label>
+          </form>
+          <form class="table-sort">
+            <label for="normal">
+              <input type="radio" name="sort" id="normal" checked />normal
+            </label>
+            <label for="reversed">
+              <input type="radio" name="sort" id="reversed" />reversed
+            </label>
+          </form>
+        </div>
+
+        <h3 class="tables-title">
+          The following table contains marathon records within each world
+          region.
+        </h3>
+        <article class="man-container" property="mainContentOfPage" typeof="Table">
+          <h2 class="man-title" property="name" content="marathon records within each world
+          region">Men</h2>
+          <div class="man-table-grid table-style">
+            <div class="head-row row ">
+              <div class="string">Region</div>
+              <div class="string">Country</div>
+              <div class="string">Time</div>
+              <div class="string">Athlete</div>
+              <div class="string">Date</div>
+            </div>
+            <div class="table-container">
+              <div class="row" property="character" typeof="Person">
+                <div class="string">Africa</div>
+                <div class="string" property="nationality">Kenya</div>
+                <div class="string">2:01:39</div>
+                <div class="string" property="name">Eliud Kipchoge</div>
+                <div class="string">16 Sep 2018</div>
+              </div>
+              <div class="row" property="character" typeof="Person">
+                <div class="string">Asia</div>
+                <div class="string" property="nationality">Bahrain</div>
+                <div class="string">2:04:43</div>
+                <div class="string" property="name">El Hassan El-Abbassi</div>
+                <div class="string">2 Dec 2018</div>
+              </div>
+              <div class="row" property="character" typeof="Person">
+                <div class="string">Europe</div>
+                <div class="string" property="nationality">Turkey</div>
+                <div class="string">2:04:16</div>
+                <div class="string" property="name">Kaan Kigen Özbilen</div>
+                <div class="string">1 Dec 2019</div>
+              </div>
+              <div class="row" property="character" typeof="Person">
+                <div class="string">North/Central America</div>
+                <div class="string" property="nationality">US</div>
+                <div class="string">2:05:38</div>
+                <div class="string" property="name">Khalid Khannouchi</div>
+                <div class="string">14 Apr 2002</div>
+              </div>
+              <div class="row" property="character" typeof="Person">
+                <div class="string">Oceania</div>
+                <div class="string" property="nationality">Australia</div>
+                <div class="string">2:07:51</div>
+                <div class="string" property="name">Robert de Castella</div>
+                <div class="string">21 Apr 1986</div>
+              </div>
+              <div class="row" property="character" typeof="Person">
+                <div class="string">South America</div>
+                <div class="string" property="nationality">Brazil</div>
+                <div class="string">2:06:05</div>
+                <div class="string" property="name">Ronaldo da Costa</div>
+                <div class="string">20 Sep 1998</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="footer">
+      <div><time class="time"></time></div>
+      <div class="author" property="author" typeof="Person">
+        <a property="url" href="https://github.com/Podexus23"><span property="name">Anton
+            Serovski</span></a>
+      </div>
+      <div class="version" property="version">0.0.3c</div>
+    </footer>
+    <script src="../js/table.js"></script>
+    <script src="../main.js"></script>
+  </div>
+</body>
+
+</html>

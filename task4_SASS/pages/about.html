@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!--* disable .css, and use .less file which compiles trough less.js -->
+  <!--* css also compiled from .less file -->
+  <link rel="stylesheet" href="../styles/styles.css" />
+
+  <title>National records in the marathon</title>
+  <meta name="description" content="The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race" />
+
+  <meta property="og:url" content="https://podexus23.github.io/FronEnd-Epam-Training/task1/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="National records in the marathon" />
+  <meta property="og:description" content="The marathon is a long-distance foot race with a distance of
+        42.195 kilometers, usually run as a road race" />
+  <meta property="og:image"
+    content="https://upload.wikimedia.org/wikipedia/commons/3/35/New_York_marathon_Verrazano_bridge.jpg" />
+</head>
+
+<body>
+  <div vocab="https://schema.org/" typeof="WebPage" class="wrapper">
+    <header class="header">
+      <div class="logo" property="primaryImageOfPage" typeof="ImageObject">
+        <a property="url" href="../index.html"><img property="image" src="../img/logo_transparent.png" alt="logo" /></a>
+      </div>
+      <h1 class="header-title" property="name">
+        National records in the marathon
+      </h1>
+    </header>
+    <nav class="main-navigation">
+      <ul property="breadcrumb" typeof="BreadcrumbList">
+        <li class="nav-link" property="itemListElement" typeof="ListItem">
+          <a property="item" href="../index.html">
+            <span property="name">home</span></a>
+          <meta property="position" content="1">
+        </li>
+        <li class="nav-link" property="itemListElement" typeof="ListItem">
+          <a property="item" href="../pages/table.html">
+            <span property="name">results table</span></a>
+          <meta property="position" content="2">
+        </li>
+        <li class="nav-link" property="itemListElement" typeof="ListItem">
+          <a property="item" href="../pages/about.html">
+            <span property="name">about us</span></a>
+          <meta property="position" content="3">
+        </li>
+      </ul>
+    </nav>
+    <main class="about-content" property="about" typeof="Person">
+      <article class="education" property="knowsAbout">
+        <h3>Education summary:</h3>
+        <p>
+          Graduated from the Pavel Sukhoi State Technical University with a
+          degree in power systems engineering.
+        </p>
+      </article>
+      <article class="language" property="knowsLanguage">
+        <h3>Language knowledge:</h3>
+        <p>According tests my english is on level <mark>Intermediate</mark>.</p>
+      </article>
+      <article class="skills">
+        <h3>My skills:</h3>
+        <p>I took several courses <br /></p>
+        <ul class="skills-list" property="knowsAbout">
+          <li>
+            <a href="https://ru.code-basics.com/languages/html" class="skills-link">HTML</a>
+          </li>
+          <li>
+            <a href="https://ru.code-basics.com/languages/css" class="skills-link">CSS</a>
+          </li>
+          <li>
+            <a href="https://ru.code-basics.com/languages/javascript" class="skills-link">JS</a>
+          </li>
+        </ul>
+      </article>
+      <nav class="contacts">
+        <h3>My contacts:</h3>
+        <ul>
+          <li>
+            <img class="header-icon" src="../img/phone-icon.svg" alt="icon: phone" />
+            <a property="telephone" href="tel:+375293867380"><span property="telephone">+375293867380</span></a>
+          </li>
+          <li>
+            <img class="header-icon" src="../img/mail-icon.svg" alt="icon: mail" />
+            <a property="email" href="mailto:santon23@gmail.com">You can E-mail me</a>
+          </li>
+          <li>
+            <img class="header-icon" src="../img/insta-icon.svg" alt="icon: instagram" />
+            <a property="url" href="https://www.instagram.com/el_thanagor/">or write in Direct</a>
+          </li>
+        </ul>
+      </nav>
+    </main>
+    <footer class="footer">
+      <div><time class="time"></time></div>
+      <div class="author" property="author" typeof="Person">
+        <a property="url" href="https://github.com/Podexus23"><span property="name">Anton
+            Serovski</span></a>
+      </div>
+      <div class="version" property="version">0.0.3c</div>
+    </footer>
+  </div>
+  <script src="../main.js"></script>
+</body>
+
+</html>

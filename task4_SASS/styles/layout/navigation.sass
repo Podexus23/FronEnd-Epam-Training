@@ -1,0 +1,32 @@
+.main-navigation 
+  position: sticky
+  top: 0px
+  z-index: 2
+  width: $main-width
+  max-width: 100vw
+  padding: 10px 0
+  background-color: $navigation-bgcolor
+
+  ul 
+    list-style: none
+    padding: 0
+    margin: 0
+    @include flex($justify-content: space-evenly)
+  
+  .nav-link 
+    text-transform: capitalize
+    font-size: 1.2rem
+    position: relative
+
+    &:after 
+      content: ""
+      height: 2px
+      background-color: $prime-font-color
+      width: 0
+      position: absolute
+      bottom: 0
+      left: 0
+      transition: $transition
+    
+    &:hover:after 
+      width: 100%
