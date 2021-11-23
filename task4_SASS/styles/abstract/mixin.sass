@@ -1,4 +1,5 @@
 //used mixins with parameters and parametric mixin without parameter
+//also call color module for changing color in border
 @use "sass:color"
 
 //blocks-mixin
@@ -30,6 +31,7 @@
   justify-content: center
 
 //tables
+//made mixin with @if @else rule to chnge between table styles
 @mixin tables($color: default)
   @if($color == default)
     @include table-color($background-color: #d7d7d7, $border: black, $color: black)
