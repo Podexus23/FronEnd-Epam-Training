@@ -26,14 +26,30 @@
       <div class="number">8</div>
       <div class="number">9</div>
       <div class="number">0</div>
-      <div class="number">+</div>
-      <div class="number">-</div>
-      <div class="number">*</div>
-      <div class="number">/</div>
-      <div class="number">=</div>
+      <div class="operation">+</div>
+      <div class="operation">-</div>
+      <div class="operation">*</div>
+      <div class="operation">/</div>
+      <div class="operation">=</div>
     </div>
-  </div>
-  <script src="./js/main.js"></script>
+    <div class="options">
+      <div class="cleaner-button">clean</div>
+      <form class="integrity">
+        <label for="integer">
+          <input type="radio" name="dataMode" id="integer" checked> integer
+        </label>
+        <label for="float">
+          <input type="radio" name="dataMode" id="float"> float
+        </label>
+      </form>
+      <form class="priority">
+        <label for="priority">
+          <input type="checkbox" name="priority" id="priority"> priority<span class="checkmark"></span>
+        </label>
+      </form>
+    </div>
+    <div class="memory-display"></div>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

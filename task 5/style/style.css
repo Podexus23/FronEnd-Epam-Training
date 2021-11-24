@@ -57,5 +57,156 @@ body {
 .numbers .number:hover {
   background-color: rgba(231, 255, 143, 0.8784313725);
 }
+.numbers .operation {
+  width: calc(20% - 1vw);
+  height: calc(33% - 1vh);
+  background-color: #7a72ffe0;
+  border: 2px solid #0015ff;
+  border-radius: 4px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.5s all;
+  user-select: none;
+}
+.numbers .operation:hover {
+  background-color: rgba(218, 216, 255, 0.8784313725);
+}
+
+.cleaner-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ffffff;
+  background-color: #37f1e8;
+  border-radius: 4px;
+  user-select: none;
+  transition: 0.5s all;
+  cursor: pointer;
+}
+.cleaner-button:hover {
+  background-color: #96f8f3;
+}
+
+.memory-display {
+  width: 100%;
+  height: 10%;
+  font-size: 1rem;
+  display: flex;
+  margin-top: 10px;
+  padding-left: 10px;
+  background-color: #ffffff;
+  border-radius: 3px;
+}
+
+.integrity {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+.integrity label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+.integrity label:hover {
+  color: #666666;
+}
+.integrity label:hover input[type=radio]::before {
+  box-shadow: inset 1em 1em leghten(#333333, 20%);
+}
+.integrity input[type=radio] {
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: inset 1em 1em #ffffff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  margin-right: 0.2em;
+  width: 0.8em;
+  height: 0.8em;
+  border: 0.1em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(0.05em);
+  display: grid;
+  place-content: center;
+}
+.integrity input[type=radio]::before {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #333333;
+}
+.integrity input[type=radio]:checked::before {
+  transform: scale(1);
+}
+
+.priority {
+  display: block;
+  position: relative;
+  padding-left: 1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: fit-content;
+  cursor: pointer;
+  /* Hide the browser's default checkbox */
+}
+.priority label {
+  cursor: pointer;
+  transition: 0.5s all;
+}
+.priority label:hover {
+  color: #666666;
+}
+.priority input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+.priority .checkmark {
+  position: absolute;
+  top: 0.3em;
+  left: 0;
+  height: 0.8em;
+  width: 0.8em;
+  border: 3px solid white;
+  border-radius: 3px;
+  transition: 0.5s all;
+  background-color: #ffffff;
+}
+.priority:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.priority input:checked ~ .checkmark {
+  background-color: #333333;
+}
+.priority .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.priority input:checked ~ .checkmark:after {
+  display: block;
+}
+.priority .checkmark:after {
+  left: 10px;
+  top: 3px;
+  width: 10px;
+  height: 20px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 
 /*# sourceMappingURL=style.css.map */
