@@ -95,6 +95,7 @@ class Calculator {
     let char = '';
 
     for (let i = 0; i < string.length; i++) {
+      //check for numbers
       if (isNumbers.includes(Number(string[i]))) {
         if (!isNumbers.includes(Number(string[i - 1]))) {
           char = string[i];
@@ -102,7 +103,7 @@ class Calculator {
           char += string[i];
         }
       }
-
+      //check for symbols
       if (Object.keys(this.operations).includes(string[i])) {
         if (char) {
           numbersArr.push(char);
@@ -112,11 +113,15 @@ class Calculator {
 
         } else symbolArr.push(string[i]);
       }
-
+      //check for last number
       if (string.length - 1 == i) {
         if (char) {
           numbersArr.push(char);
         }
+      }
+      if (string[i] == "I" && string.includes('Infinity')) {
+        numbersArr.push('Infinity');
+        i += "Infinity".length - 1;
       }
     }
     return [numbersArr, symbolArr]
@@ -156,9 +161,10 @@ class Calculator {
           display.textContent += target.innerText;
         }
       } else if (target.innerText == '=') {
-        this.memory.push([display.textContent, this.count(display.textContent)])
-        display.textContent = this.count(display.textContent)
-        this.showingMemory()
+        let finale = this.count(display.textContent);
+        this.memory.push([display.textContent, finale]);
+        display.textContent = finale;
+        this.showingMemory();
       } else {
         display.textContent += target.innerText;
       }
