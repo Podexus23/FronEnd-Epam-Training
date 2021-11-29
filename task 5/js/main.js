@@ -1,7 +1,7 @@
 class Calculator {
   constructor() {
     this.settings = {
-      mode: 'integer', //!change mode
+      mode: 'integer',
       priority: false,
     }
     this.isResult = false;
@@ -22,11 +22,9 @@ class Calculator {
 
   count(string) {
     let [numbers, symbols] = this.parse(string); //return [[Array=numbers] [Array=symbols]]
-    console.log(numbers, symbols, 'after parse')
     if (symbols.includes('.')) {
       [numbers, symbols] = this.makeFloatNum(numbers, symbols)
     }
-    console.log(numbers, symbols, 'after parse and float')
     let arrCounter = 0;
     let sum;
     const filteredSymbols = symbols.filter(elem => elem != '/' && elem != '*')
@@ -39,6 +37,7 @@ class Calculator {
         arrCounter++
         return demoSum
       })
+      sum = Number(sum).toFixed(10)
       arrCounter = 0;
     }
     if (this.settings.priority) {
@@ -68,14 +67,13 @@ class Calculator {
     if (this.settings.mode == 'integer') {
       return Math.floor(sum)
     } else {
-      return sum
+      return Number(sum)
     }
   }
 
   makeFloatNum(num, symbol) {
     let allNumbers = [];
     let allSymbols = [];
-    // console.log(num, symbol, 'floatnum')
     for (let i = 0; i < symbol.length + 1; i++) {
       if (symbol[i] == '.') {
         allNumbers.push(`${num[i]}.${num[i+1]}`)
@@ -248,7 +246,6 @@ class Calculator {
           console.log(this.toJSON())
         }
         if (type.contains('json-page')) {
-          const results = document.querySelector('.json-results')
           window.open(`json.html?json=${this.toJSON()}`)
         }
         if (type.contains('json-send')) {
@@ -274,14 +271,3 @@ class Calculator {
 
 let calc = new Calculator();
 calc.workInProgress();
-
-// export {
-//   calc
-// }
-// //test
-// console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-4.26", 'float priority') // float priority
-// console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-4.4", 'float') // float
-// console.log(calc.count('17-5*6/3-2+4/2*17-5*6/3-2+4/2'), 29)
-// console.log(calc.count('-7*8'), '-56')
-// console.log(calc.count('6:2·8:3'))
-// console.log(calc.count('7-4.3'), '2.7') //float
