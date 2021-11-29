@@ -95,10 +95,20 @@ class Calculator {
     let char = '';
 
     for (let i = 0; i < string.length; i++) {
+      //check if first symbol is minus
+      if (string[0] == '-' && i == 0) {
+        char = string[i]
+        i++
+      }
       //check for numbers
       if (isNumbers.includes(Number(string[i]))) {
         if (!isNumbers.includes(Number(string[i - 1]))) {
-          char = string[i];
+          if (char == '-') {
+            char += string[i]
+          } else {
+            char = string[i];
+          }
+
         } else {
           char += string[i];
         }
@@ -225,5 +235,6 @@ calc.workInProgress();
 // console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-4.26", 'loat priority') // float priority
 // console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-4.4", 'float') // float
 // console.log(calc.count('17-5*6/3-2+4/2*17-5*6/3-2+4/2'), 29)
+console.log(calc.count('-7*8'), '-56')
 // console.log(calc.count('6:2·8:3'))
 // console.log(calc.count('7-4.3'), '2.7') //float
