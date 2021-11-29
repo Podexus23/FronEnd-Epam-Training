@@ -4,3 +4,4 @@
 - [Task 3: CSS Presentation Layout](https://podexus23.github.io/FronEnd-Epam-Training/task3/index.html)
 - [Task 4: LESS](https://podexus23.github.io/FronEnd-Epam-Training/task4/index.html)
 - [Task 4: SASS](https://podexus23.github.io/FronEnd-Epam-Training/task4_SASS/index.html)
+- [Task 5: JS Basics](https://podexus23.github.io/FronEnd-Epam-Training/task%205/index.html)
