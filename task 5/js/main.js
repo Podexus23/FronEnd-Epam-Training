@@ -225,16 +225,63 @@ class Calculator {
     this.checkPriority()
     this.printOnDisplay();
     this.cleanDisplay();
+    this.sendJSON();
+  }
+
+  toJSON() {
+    let jsonFile = {};
+    this.memory.forEach((elem => {
+      jsonFile[elem[0]] = String([elem[1]])
+    }))
+    return JSON.stringify(jsonFile)
+  }
+
+  sendJSON() {
+    let jsonButtons = document.querySelector('.json-buttons');
+
+    jsonButtons.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('json-button')) {
+        return
+      } else {
+        let type = e.target.classList;
+        if (type.contains('json-console')) {
+          console.log(this.toJSON())
+        }
+        if (type.contains('json-page')) {
+          const results = document.querySelector('.json-results')
+          window.open(`json.html?json=${this.toJSON()}`)
+        }
+        if (type.contains('json-send')) {
+          const memTable = document.querySelector('.memory-display')
+          const json = JSON.parse(this.toJSON())
+          fetch('https://jsonplaceholder.typicode.com/posts', {
+              method: 'POST',
+              body: JSON.stringify(json),
+              headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+              },
+            })
+            .then((response) => response.json())
+            .then((json) => {
+              memTable.textContent = `hello from server ${JSON.stringify(json)}`
+            })
+          console.log('send to server')
+        }
+      }
+    })
   }
 }
 
 let calc = new Calculator();
 calc.workInProgress();
 
-//test
-// console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-4.26", 'loat priority') // float priority
+// export {
+//   calc
+// }
+// //test
+// console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-4.26", 'float priority') // float priority
 // console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-4.4", 'float') // float
 // console.log(calc.count('17-5*6/3-2+4/2*17-5*6/3-2+4/2'), 29)
-console.log(calc.count('-7*8'), '-56')
+// console.log(calc.count('-7*8'), '-56')
 // console.log(calc.count('6:2·8:3'))
 // console.log(calc.count('7-4.3'), '2.7') //float
