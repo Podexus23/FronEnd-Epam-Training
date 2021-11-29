@@ -8,13 +8,13 @@ class Calculator {
     this.first = 0;
     this.second = 0;
     this.operations = {
-      '+': () => this.first + this.second,
-      '-': () => this.first - this.second,
-      "−": () => this.first - this.second,
-      '*': () => this.first * this.second,
-      '·': () => this.first * this.second,
-      '/': () => this.first / this.second,
-      ':': () => this.first / this.second,
+      '+': () => Number(this.first) + Number(this.second),
+      '-': () => Number(this.first) - Number(this.second),
+      "−": () => Number(this.first) - Number(this.second),
+      '*': () => Number(this.first) * Number(this.second),
+      '·': () => Number(this.first) * Number(this.second),
+      '/': () => Number(this.first) / Number(this.second),
+      ':': () => Number(this.first) / Number(this.second),
       '.': () => Number(`${this.first}.${this.second}`)
     }
     this.memory = [];
@@ -22,10 +22,11 @@ class Calculator {
 
   count(string) {
     let [numbers, symbols] = this.parse(string); //return [[Array=numbers] [Array=symbols]]
+    console.log(numbers, symbols, 'after parse')
     if (symbols.includes('.')) {
       [numbers, symbols] = this.makeFloatNum(numbers, symbols)
     }
-
+    console.log(numbers, symbols, 'after parse and float')
     let arrCounter = 0;
     let sum;
     const filteredSymbols = symbols.filter(elem => elem != '/' && elem != '*')
@@ -71,8 +72,24 @@ class Calculator {
     }
   }
 
+  makeFloatNum(num, symbol) {
+    let allNumbers = [];
+    let allSymbols = [];
+    // console.log(num, symbol, 'floatnum')
+    for (let i = 0; i < symbol.length + 1; i++) {
+      if (symbol[i] == '.') {
+        allNumbers.push(`${num[i]}.${num[i+1]}`)
+      }
+      if (symbol[i] != '.' && symbol[i - 1] != '.') {
+        allNumbers.push(num[i])
+      }
+    }
+    allSymbols = symbol.filter(e => e != '.')
+    return [allNumbers, allSymbols]
+  }
+
   parse(string) {
-    const isNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const isNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, Infinity];
     let numbersArr = [];
     let symbolArr = [];
     let char = '';
@@ -120,6 +137,9 @@ class Calculator {
       }
       //if number on screen is previous answer
       else if (this.isResult) {
+        if (target.innerText == '=') {
+          return
+        }
         if (Object.keys(this.operations).includes(target.textContent)) {
           this.isResult = false;
           display.textContent += target.innerText;
@@ -129,7 +149,7 @@ class Calculator {
         }
       }
       //if number on screen is 0
-      else if (display.textContent == 0) {
+      else if (display.textContent == '0') {
         if (isNumbers.includes(Number(target.textContent))) {
           display.textContent = target.innerText;
         } else if (Object.keys(this.operations).includes(target.textContent)) {
@@ -160,13 +180,6 @@ class Calculator {
     }).join(', ')
   }
 
-  workInProgress() {
-    this.checkMode()
-    this.checkPriority()
-    this.printOnDisplay();
-    this.cleanDisplay();
-  }
-
   checkMode() {
     const form = document.querySelector('.integrity')
     const dotButton = document.querySelector('.operation[data-blocked]');
@@ -182,6 +195,7 @@ class Calculator {
       }
     })
   }
+
   checkPriority() {
     const box = document.querySelector('.priority label')
     box.addEventListener('click', (event) => {
@@ -189,28 +203,12 @@ class Calculator {
         this.settings.priority = event.target.checked
     })
   }
-  makeFloatNum(num, symbol) {
-    let allNumbers = [];
-    let allSymbols = [];
-    // console.log(num, symbol, 'floatnum')
-    for (let i = 0; i < symbol.length; i++) {
 
-      if (symbol[i + 1] == '.') {
-        allSymbols.push(symbol[i])
-      } else if (symbol[i] == '.') {
-        allNumbers.push(Number(`${num[i]}.${num[i+1]}`))
-      }
-      //crutch for first number
-      else if (symbol[0] != '.' && symbol[1] != '.') {
-        allSymbols.push(symbol[i])
-        allNumbers.push(Number(num[i]))
-      } else {
-        allSymbols.push(symbol[i])
-        allNumbers.push(Number(num[i + 1]))
-      }
-      // console.log(allNumbers, allSymbols, i)
-    }
-    return [allNumbers, allSymbols]
+  workInProgress() {
+    this.checkMode()
+    this.checkPriority()
+    this.printOnDisplay();
+    this.cleanDisplay();
   }
 }
 
@@ -218,6 +216,8 @@ let calc = new Calculator();
 calc.workInProgress();
 
 //test
-// console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-1.9") // -4.26
+// console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-4.26", 'loat priority') // float priority
+// console.log(calc.count('1.2+1.2+1.2+8-13.5+1.2+1.2*1.2+8-13'), "-4.4", 'float') // float
 // console.log(calc.count('17-5*6/3-2+4/2*17-5*6/3-2+4/2'), 29)
 // console.log(calc.count('6:2·8:3'))
+// console.log(calc.count('7-4.3'), '2.7') //float
