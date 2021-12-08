@@ -1,0 +1,49 @@
+body {
+  background-image: url("../img/project_papper.png");
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 16px;
+}
+h2,
+h1 {
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.title {
+  font-size: 2rem;
+}
+.pizzamaker {
+  background-color: rgba(191, 59, 59, 0.419);
+  padding: 1rem;
+  border: 1px solid rgba(254, 60, 60, 0.55);
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px 1px red;
+}
+.wrapper {
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+}
+.type-block {
+  cursor: pointer;
+  width: 12.5%;
+  padding: 0.5em;
+  background-color: rgba(101, 255, 255, 0.845);
+  border: 1px solid rgb(0, 177, 177);
+  border-radius: 5px;
+  transition: all 0.5s;
+  text-align: center;
+}
+.type-block:hover {
+  background-color: rgba(101, 255, 255, 0.365);
+}
+.type-block .block-img {
+  margin: auto;
+  width: 80%;
+  min-height: 50px;
+  height: 70%;
+  background-color: slateblue;
+}

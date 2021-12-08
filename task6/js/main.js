@@ -209,9 +209,92 @@ Pizza.allPizzas = [];
 let margarita = new Pizza(pizzaBaseType.italian, sauce.cheese, pizzaProducts.ham, pizzaProducts.tomato)
 let cheapPizza = new Pizza(pizzaBaseType.thin, sauce.cheese, pizzaProducts.jalapeno);
 let luxuryPizza = new Pizza(pizzaBaseType.thick, sauce.cheese, pizzaProducts.chicken, pizzaProducts.ham)
-console.log(`%cBase price: ${margarita.basePrice()} and %cfinal price: ${margarita.madePizza()} of margarita`, 'color: #bada55', 'color: #c44');
-console.log(`%cBase price: ${cheapPizza.basePrice()} and %cfinal price: ${cheapPizza.madePizza()} of cheapPizza`, 'color: #bada55', 'color: #c44');
-console.log(`%cBase price: ${luxuryPizza.basePrice()} and %cfinal price: ${luxuryPizza.madePizza()} of luxuryPizza`, 'color: #bada55', 'color: #c44');
-console.log(luxuryPizza.alertAllPizzas())
-console.log(luxuryPizza.myName())
-console.log(luxuryPizza.ps())
+
+// console.log(`%cBase price: ${margarita.basePrice()} and %cfinal price: ${margarita.madePizza()} of margarita`, 'color: #bada55', 'color: #c44');
+// console.log(`%cBase price: ${cheapPizza.basePrice()} and %cfinal price: ${cheapPizza.madePizza()} of cheapPizza`, 'color: #bada55', 'color: #c44');
+// console.log(`%cBase price: ${luxuryPizza.basePrice()} and %cfinal price: ${luxuryPizza.madePizza()} of luxuryPizza`, 'color: #bada55', 'color: #c44');
+// console.log(luxuryPizza.alertAllPizzas())
+// console.log(luxuryPizza.myName())
+// console.log(luxuryPizza.ps())
+
+function createPage() {
+  createDoughBlock(pizzaBaseType);
+  createProductsBlock(pizzaProducts);
+  createSauceBlock(sauce);
+};
+
+function createDoughBlock(objType) {
+  const article = document.createElement('article');
+  const h2 = document.createElement('h2');
+  const div = document.createElement('div');
+  const type = 'dough';
+  const names = Object.keys(objType);
+  article.classList.add('pizzamaker-type');
+  article.append(h2);
+  article.append(div)
+
+  h2.classList.add('title');
+  h2.textContent = 'Select the type of dough';
+
+  div.classList.add('wrapper');
+  div.classList.add('doughtype');
+  names.forEach((elem) => {
+    div.append(createTypeBlock(type, elem))
+  })
+  document.querySelector('.pizzamaker').append(article)
+}
+
+function createSauceBlock(objType) {
+  const article = document.createElement('article');
+  const h2 = document.createElement('h2');
+  const div = document.createElement('div');
+  const type = 'sauce';
+  const names = Object.keys(objType);
+  article.classList.add('pizzamaker-type');
+  article.append(h2);
+  article.append(div)
+
+  h2.classList.add('title');
+  h2.textContent = 'Select the type of sauce';
+
+  div.classList.add('wrapper');
+  div.classList.add('sauce');
+  names.forEach((elem) => {
+    div.append(createTypeBlock(type, elem))
+  })
+  document.querySelector('.pizzamaker').append(article)
+}
+
+function createProductsBlock(objType) {
+  const article = document.createElement('article');
+  const h2 = document.createElement('h2');
+  const div = document.createElement('div');
+  const type = 'product';
+  const names = Object.keys(objType);
+  article.classList.add('pizzamaker-type');
+  article.append(h2);
+  article.append(div)
+
+  h2.classList.add('title');
+  h2.textContent = 'Select the products';
+
+  div.classList.add('wrapper');
+  div.classList.add('product');
+  names.forEach((elem) => {
+    div.append(createTypeBlock(type, elem))
+  })
+  document.querySelector('.pizzamaker').append(article)
+}
+
+function createTypeBlock(type, name) {
+  const div = document.createElement('div');
+  const img = document.createElement('div');
+  img.classList.add('block-img')
+  div.classList.add(`${type}-${name}`)
+  div.classList.add(`type-block`)
+  div.textContent = name;
+  div.prepend(img);
+  return div
+}
+
+createPage()
