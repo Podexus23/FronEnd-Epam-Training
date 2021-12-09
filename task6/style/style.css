@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   background-image: url("../img/project_papper.png");
   font-family: "Chakra Petch", sans-serif;
@@ -36,14 +39,65 @@ h1 {
   border-radius: 5px;
   transition: all 0.5s;
   text-align: center;
+  text-transform: capitalize;
+  user-select: none;
 }
 .type-block:hover {
   background-color: rgba(101, 255, 255, 0.365);
 }
-.type-block .block-img {
+.block-img {
   margin: auto;
   width: 80%;
-  min-height: 50px;
+  min-height: 70px;
   height: 70%;
   background-color: slateblue;
+  margin-bottom: 5px;
+}
+
+.type-block[data-active="active"] {
+  cursor: pointer;
+  width: 12.5%;
+  padding: 0.5em;
+  background-color: rgba(255, 218, 72, 0.845);
+  border: 1px solid rgb(183, 169, 14);
+  border-radius: 5px;
+  transition: all 0.5s;
+  text-align: center;
+  text-transform: capitalize;
+}
+.type-block[data-active="empty"] {
+  cursor: pointer;
+  width: 12.5%;
+  opacity: 0.5;
+  padding: 0.5em;
+  background-color: rgba(255, 218, 72, 0.845);
+  border: 1px solid rgb(183, 169, 14);
+  border-radius: 5px;
+  transition: all 0.5s;
+  text-align: center;
+  text-transform: capitalize;
+}
+.type-block[data-active="load"] {
+  cursor: pointer;
+  width: 12.5%;
+  opacity: 1;
+  padding: 0.5em;
+  background-color: rgba(128, 255, 65, 0.564);
+  border: 1px solid rgb(54, 255, 145);
+  border-radius: 5px;
+  transition: all 0.5s;
+  text-align: center;
+  text-transform: capitalize;
+}
+.result-basket {
+  display: flex;
+  flex-wrap: wrap;
+}
+.result-basket .type-block {
+  width: 25%;
+}
+.result-products[data-active="load"] {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
 }
