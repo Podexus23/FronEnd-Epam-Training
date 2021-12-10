@@ -167,7 +167,7 @@ class Sauce extends Products {
     super(dough);
     this.productBasket = [];
     this.sauce = [];
-    let prodBasket = prod.filter((elem) => !Object.keys(this.pieSauce).includes(elem));
+    let prodBasket = prod.flat().filter((elem) => !Object.keys(this.pieSauce).includes(elem));
 
     prod.forEach((elem) => {
       if (Object.keys(this.pieSauce).includes(elem)) {
@@ -195,19 +195,6 @@ class Sauce extends Products {
   }
 }
 
-let pirog = new Pie('thin');
-pirog.makePie()
-console.log(pirog)
-
-let basket = new Products('puff', 'ham', 'pineapple');
-console.log(basket)
-basket.makePie();
-
-let saucy = new Sauce('puff', 'ham', 'pineapple', 'ketchup')
-saucy.makePie();
-console.log(saucy)
-
-console.log(Pie.allPies)
 
 class PieSeller {
   pieDough = {
@@ -326,7 +313,11 @@ class PieSeller {
     products: 'default',
     sauce: 'default',
   }
-  constructor() {}
+  constructor() {
+    this.pizza;
+    this.price;
+    this.energy;
+  }
   //page generator
   createShopPage() {
     this.createSelectionBlock("dough", this.pieDough)
@@ -334,7 +325,6 @@ class PieSeller {
     this.createSelectionBlock("sauce", this.pieSauce)
     this.createResultBlock('result', this.pieResult)
   }
-
   createSelectionBlock(name, obj) {
     const article = document.createElement('article');
     const h2 = document.createElement('h2');
@@ -353,17 +343,17 @@ class PieSeller {
 
     for (let key in obj) {
       div.append(this.createTypeBlock(name, [key, obj[key]]))
-      console.log(obj[key])
     }
 
     document.querySelector('.pizzamaker').append(article)
   }
-
   createResultBlock(name, obj) {
     const article = document.createElement('article');
     const h2 = document.createElement('h2');
     const div = document.createElement('div');
     const names = Object.keys(obj);
+    const button = document.createElement('button')
+    const summ = document.createElement('p')
 
     article.classList.add(`pizzamaker-${name}`);
     article.append(h2);
@@ -375,15 +365,19 @@ class PieSeller {
     div.classList.add('wrapper');
     div.classList.add(`${name}`);
 
+    button.classList.add('result-button');
+    button.textContent = 'Buy Pizza';
+
+    summ.classList.add('result-summ')
+    summ.textContent = `Final price: 0 $, Energy: 0 kcal`
     names.forEach((elem) => {
       div.append(this.createTypeBlock(name, [elem], 'empty'))
     })
-
+    article.append(button)
+    article.append(summ)
     document.querySelector('.pizzamaker').append(article)
   }
-
   createTypeBlock(type, [name, info = undefined], key = "default") {
-    // console.log((type, name, key))
     const div = document.createElement('div');
     const img = document.createElement('div');
     const price = document.createElement('p');
@@ -409,8 +403,11 @@ class PieSeller {
     }
     return div
   }
-
   //making pie
+  chooseIngredients() {
+    this.selectBlock();
+    this.showResultBlock();
+  }
   selectBlock() {
     const wrappers = document.querySelectorAll('.wrapper');
 
@@ -435,12 +432,14 @@ class PieSeller {
   }
   showResultBlock() {
     const wrappers = document.querySelectorAll('.wrapper');
-    const doughResult = document.querySelector('.result-dough');
-    const productResult = document.querySelector('.result-products');
-    const sauceResult = document.querySelector('.result-sauce');
 
     wrappers.forEach((elem) => {
       elem.addEventListener('click', (e) => {
+        const doughResult = document.querySelector('.result-dough');
+        const productResult = document.querySelector('.result-products');
+        const sauceResult = document.querySelector('.result-sauce');
+        const summBlock = document.querySelector('.result-summ');
+
         if (e.target.closest('.type-block') && elem.querySelector('.type-block[data-active="active"]')) {
           let chosen = elem.querySelector('.type-block[data-active="active"]')
           // console.dir(chosen)
@@ -453,19 +452,21 @@ class PieSeller {
             sauceResult.innerHTML = chosen.innerHTML;
           }
           if (chosen.parentElement.classList.contains('product')) {
-
             productResult.dataset.active = 'load';
             productResult.innerHTML = ''
             productResult.append(this.addToProductCart())
-            productResult.append('Products');
           }
+        }
+
+        if (productResult.dataset.active == sauceResult.dataset.active && doughResult.dataset.active == 'load' && productResult.dataset.active == doughResult.dataset.active) {
+          let summAndEnergy = this.showPrice();
+          summBlock.textContent = `Final price: ${summAndEnergy[0]} $, Energy: ${summAndEnergy[1]} kcal`
         }
       })
     })
   }
   addToProductCart() {
     const products = document.querySelectorAll('.product .type-block');
-    console.dir(products)
     const div = document.createElement('div');
     div.classList.add('result-basket')
     products.forEach((elem) => {
@@ -477,17 +478,143 @@ class PieSeller {
     })
     return div
   }
-  bakePie() {
-    this.selectBlock();
-    this.showResultBlock();
+  //make a purchase
+  showPrice() {
+    let [summ, energy] = this.countBasePriceAndEnergy();
+    let base = this.countMinMaxPrice()
+    let final = this.makeFinalPrice(base, summ);
+    this.price = final;
+    this.energy = energy;
+    return [this.makeFinalPrice(base, summ), energy]
+  }
+  countBasePriceAndEnergy() {
+    const result = document.querySelector('.result');
+    let blocks = result.querySelectorAll('.type-block[data-active="load"]')
+    let prods = []
+    blocks.forEach((elem) => {
+      if (elem.childNodes[1]) {
+        prods.push(elem.childNodes[1].textContent)
+      }
+    })
+
+    let summ = this.pieDough[prods[0]].price +
+      prods.slice(1, prods.length - 1).map((elem) => {
+        return this.pieProducts[elem].price
+      }).reduce((a, b) => a + b) + this.pieSauce[prods[prods.length - 1]].price;
+
+    let energy = this.pieDough[prods[0]].calories +
+      prods.slice(1, prods.length - 1).map((elem) => {
+        return this.pieProducts[elem].calories
+      }).reduce((a, b) => a + b) + this.pieSauce[prods[prods.length - 1]].calories;
+
+    return [summ, energy]
+  }
+  makeFinalPrice([min, max], basePrice) {
+    const firstLimit = min;
+    const secondLimit = max;
+    let finalPrice;
+    if (basePrice < firstLimit) {
+      finalPrice = basePrice * 1.2;
+    }
+    if (basePrice > firstLimit && basePrice < secondLimit) {
+      finalPrice = basePrice * 1.15;
+    }
+    if (basePrice > secondLimit) {
+      finalPrice = basePrice * 1.1;
+    }
+    return (Math.ceil(finalPrice * 100) / 100).toFixed(2)
   }
   //working page
   openShop() {
     this.createShopPage();
-    this.bakePie();
+    this.chooseIngredients();
+    const button = document.querySelector('.result-button');
+
+    button.addEventListener('click', this.buyPie.bind(this))
   }
+  buyPie() {
+    const result = document.querySelector('.result');
+
+    let blocks = result.querySelectorAll('.type-block[data-active="load"]');
+    let prods = [];
+    blocks.forEach((elem) => {
+      if (elem.childNodes[1]) {
+        prods.push(elem.childNodes[1].textContent);
+      }
+    })
+    this.pizza = new Sauce(prods[0], prods.slice(1, prods.length - 1), prods[prods.length - 1]);
+    this.savePizza(this.pizza, this.price, this.energy)
+    this.cleaner();
+  }
+  // supportive methods
+  countMinMaxPrice() {
+    let minProd, minType, minSauce;
+    let maxProd, maxType, maxSauce;
+    for (let type in this.pieProducts) {
+      if (!minProd) minProd = this.pieProducts[type].price;
+      if (!maxProd) maxProd = this.pieProducts[type].price;
+      if (minProd > this.pieProducts[type].price) minProd = this.pieProducts[type].price;
+      if (maxProd < this.pieProducts[type].price) maxProd = this.pieProducts[type].price;
+    }
+    for (let type in this.pieDough) {
+      if (!minType) minType = this.pieDough[type].price;
+      if (!maxType) maxType = this.pieDough[type].price;
+      if (minType > this.pieDough[type].price) minType = this.pieDough[type].price;
+      if (maxType < this.pieDough[type].price) maxType = this.pieDough[type].price;
+    }
+    for (let type in this.pieSauce) {
+      if (!minSauce) minSauce = this.pieSauce[type].price;
+      if (!maxSauce) maxSauce = this.pieSauce[type].price;
+      if (minSauce > this.pieSauce[type].price) minSauce = this.pieSauce[type].price;
+      if (maxSauce < this.pieSauce[type].price) maxSauce = this.pieSauce[type].price;
+    }
+    const minCost = minProd + minType + minSauce;
+    const maxCost = maxProd + maxType + maxSauce;
+    return [minCost, maxCost];
+  }
+  savePizza(...pie) {
+    PieSeller.allPies.push(pie)
+  }
+  cleaner() {
+    const allActive = document.querySelectorAll(`.type-block[data-active="active"]`);
+    const resultBlock = document.querySelector('.result');
+    const div = document.createElement('div');
+    const names = Object.keys(this.pieResult);
+    const title = document.querySelector('.pizzamaker-result .title')
+
+    div.classList.add('wrapper');
+    div.classList.add('result');
+    names.forEach((elem) => {
+      div.append(this.createTypeBlock('result', [elem], 'empty'))
+    })
+
+    allActive.forEach(elem => {
+      elem.dataset.active = 'default'
+    })
+
+    resultBlock.remove();
+    title.after(div)
+
+    this.pizza = undefined;
+    console.log(PieSeller.allPies)
+  }
+
 }
 PieSeller.allPies = [];
 let shop = new PieSeller();
 
 shop.openShop()
+
+// let pirog = new Pie('thin');
+// pirog.makePie()
+// console.log(pirog)
+
+// let basket = new Products('puff', 'ham', 'pineapple');
+// console.log(basket)
+// basket.makePie();
+
+// let saucy = new Sauce('thin', ['pepper', 'ketchup'])
+// saucy.makePie();
+// console.log(saucy)
+
+// console.log(Pie.allPies)
