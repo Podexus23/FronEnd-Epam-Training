@@ -254,8 +254,6 @@ function createSelectionBlock(name, obj) {
   document.querySelector('.pizzamaker').append(article)
 }
 
-/* differences between usual createBlock */
-/* textContent, add option "empty" for createTypeBlock*/
 function createResultBlock(name, obj) {
   const article = document.createElement('article');
   const h2 = document.createElement('h2');
@@ -292,6 +290,7 @@ function createTypeBlock(type, name, key = "default") {
   div.prepend(img);
   return div
 }
+
 
 function makePizza() {
   selectBlock();
