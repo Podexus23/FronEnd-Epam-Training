@@ -149,12 +149,23 @@ class PieSeller {
     this.energy;
   }
   //page generator
+  /**
+   * Creating HTML page block by block
+   * @function
+   */
   createShopPage() {
     this.createSelectionBlock("dough", this.pieDough)
     this.createSelectionBlock("product", this.pieProducts)
     this.createSelectionBlock("sauce", this.pieSauce)
     this.createResultBlock('result', this.pieResult)
   }
+  /**
+   * Creating and append HTML article with info from object
+   * using createTypeBlock() func for creating each block of article
+   * @function
+   * @param {string} name prefix for classes
+   * @param {object} obj block info with all names and values
+   */
   createSelectionBlock(name, obj) {
     const article = document.createElement('article');
     const h2 = document.createElement('h2');
@@ -174,9 +185,16 @@ class PieSeller {
     for (let key in obj) {
       div.append(this.createTypeBlock(name, [key, obj[key]]))
     }
-
     document.querySelector('.pizzamaker').append(article)
   }
+  /**
+   * Same as createSelectionBlock(name, obj)
+   * but have minor differences specially made for result block
+   * such as adding button and info about counted results
+   * @function
+   * @param {string} name prefix for classes
+   * @param {object} obj premade obj for result blocks
+   */
   createResultBlock(name, obj) {
     const article = document.createElement('article');
     const h2 = document.createElement('h2');
@@ -208,18 +226,26 @@ class PieSeller {
     article.append(summ)
     document.querySelector('.pizzamaker').append(article)
   }
+  /**
+   * Creating block for articles according of type make class prefix
+   * param1 destructured for those block that doesn't have info parameter, such as result blocks
+   * key create data-active parameter, to divide different blocks and their functionality
+   * @function
+   * @param {string} type class prefix 
+   * @param {[string, obj || undefined]} param1 second prefix and top text content of block, 
+   * second parameter is info about product or undefined for result blocks
+   * @param {string} key data-active parameter 
+   * @returns {HTMLDivElement} div block with classes and inside info
+   */
   createTypeBlock(type, [name, info = undefined], key = "default") {
     const div = document.createElement('div');
     const img = document.createElement('div');
     const price = document.createElement('p');
     const energy = document.createElement('p');
 
-
     img.classList.add('block-img')
     price.classList.add('block-price');
     energy.classList.add('block-energy');
-
-
 
     div.classList.add(`${type}-${name}`)
     div.classList.add(`type-block`)
@@ -235,10 +261,19 @@ class PieSeller {
     return div
   }
   //making pie
+  /**
+   * Make visible chosen block between select articles and show them at result article
+   * @function
+   */
   chooseIngredients() {
     this.selectBlock();
     this.showResultBlock();
   }
+  /**
+   * Make selected block visible between others
+   * if it's product category several blocks can be chosen
+   * @function
+   */
   selectBlock() {
     const wrappers = document.querySelectorAll('.wrapper');
 
@@ -261,6 +296,12 @@ class PieSeller {
       })
     })
   }
+  /**
+   * Take info about chosen block and put the in result article,
+   * use addToProductCart(), cuz of differences between quantity of selected blocks,
+   * use showPrice(), to show result price and energy for chosen blocks
+   * @function
+   */
   showResultBlock() {
     const wrappers = document.querySelectorAll('.wrapper');
 
@@ -297,6 +338,11 @@ class PieSeller {
       })
     })
   }
+  /**
+   * Used to create blocks for main result-product cart
+   * @function
+   * @returns @returns {HTMLDivElement} div block with product class and inside info
+   */
   addToProductCart() {
     const products = document.querySelectorAll('.product .type-block');
     const div = document.createElement('div');
@@ -311,6 +357,10 @@ class PieSeller {
     return div
   }
   //make a purchase
+  /**
+   * 
+   * @returns 
+   */
   showPrice() {
     let [summ, energy] = this.countBasePriceAndEnergy();
     let base = this.countMinMaxPrice()
