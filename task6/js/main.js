@@ -2,7 +2,7 @@
  * Class Creating page, count price and hold information about all addition elements
  */
 class PieSeller {
-  /** shows maximum extra value for prices
+  /** shows extra value modifier for prices
    * @default
    */
   extra = 1.2;
@@ -409,6 +409,7 @@ class PieSeller {
     return [minCost, maxCost];
   }
   savePizza(...pie) {
+    this.sendData('https://jsonplaceholder.typicode.com/posts/', pie)
     PieSeller.allPies.push(pie)
   }
   cleaner() {
@@ -444,7 +445,21 @@ class PieSeller {
     let energy = energyPrice[1]
     this.savePizza(consolePizza, price, energy);
   }
-
+  async sendData(url, objPie) {
+    let response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        pizza: objPie[0],
+        price: objPie[1],
+        energy: objPie[2],
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    let message = await response.json();
+    console.log(message)
+  }
 }
 PieSeller.allPies = [];
 
@@ -480,3 +495,4 @@ let shop = new PieSeller();
 shop.openShop()
 shop.createConsolePie('italian', 'ham', 'pineapple', 'bbq')
 console.log(PieSeller.allPies, 'all pies')
+// shop.sendData(, PieSeller.allPies[0])
