@@ -1,202 +1,16 @@
-class Pie {
-  pieDough = {
-    'thin': {
-      calories: 100,
-      weight: 100,
-      price: 15,
-    },
-    'thick': {
-      calories: 300,
-      weight: 250,
-      price: 25,
-    },
-    'italian': {
-      calories: 200,
-      weight: 175,
-      price: 20,
-    },
-    'calzone': {
-      calories: 225,
-      weight: 200,
-      price: 15,
-    },
-    'focaccia': {
-      calories: 175,
-      weight: 130,
-      price: 17,
-    },
-    'puff': {
-      calories: 150,
-      weight: 120,
-      price: 17,
-    },
-  }
-  constructor(dough) {
-    if (Object.keys(this.pieDough).includes(dough)) {
-      this.dough = [dough, this.pieDough[dough]];
-    } else {
-      throw new Error('Wrong dough type, check .pieDough for enabled types')
-    }
-  }
-  addNewType(obj, name, stats) {
-    if (obj[name]) throw new Error("already exist, try changeType method")
-    obj[name] = stats;
-  }
-
-  changeType(obj, name, stats) {
-    if (obj[name]) obj[name] = stats;
-    throw new Error("Type don't exist, try addNewType method")
-  }
-
-  static countMinimal(obj) {
-    let minimal = 0;
-    for (let type in obj) {
-      if (!minimal) minimal = obj[type].price;
-      if (minimal > obj[type].price) minimal = obj[type].price;
-    }
-    return minimal;
-  }
-  makePie() {
-    if (this.dough) Pie.allPies.push({
-      'dough': this.dough
-    })
-  }
-}
-Pie.allPies = [];
-
-class Products extends Pie {
-  pieProducts = {
-    'pepper': {
-      calories: 10,
-      weight: 7,
-      price: 1.5,
-    },
-    'tomato': {
-      calories: 10,
-      weight: 10,
-      price: 1.5,
-    },
-    'chicken': {
-      calories: 20,
-      weight: 15,
-      price: 2.5,
-    },
-    'sausages': {
-      calories: 35,
-      weight: 20,
-      price: 1.5,
-    },
-    'ham': {
-      calories: 35,
-      weight: 20,
-      price: 2.5,
-    },
-    'mushrooms': {
-      calories: 20,
-      weight: 10,
-      price: 1.5,
-    },
-    'olives': {
-      calories: 10,
-      weight: 6,
-      price: 1.5,
-    },
-    'pineapple': {
-      calories: 34,
-      weight: 13,
-      price: 2.5,
-    },
-    'jalapeno': {
-      calories: 10,
-      weight: 4,
-      price: 0.5,
-    },
-  }
-  constructor(dough, ...prod) {
-    super(dough);
-    this.productBasket = [];
-
-    prod.forEach((elem) => {
-      if (Object.keys(this.pieProducts).includes(elem)) {
-        this.productBasket.push(elem, this.pieProducts[elem])
-      } else {
-        throw new Error('Wrong product, check .pieProduct for enabled types')
-      }
-    })
-
-
-  }
-
-
-}
-
-class Sauce extends Products {
-  pieSauce = {
-    'ketchup': {
-      calories: 50,
-      weight: 25,
-      price: 3,
-    },
-    'mustard': {
-      calories: 50,
-      weight: 25,
-      price: 3,
-    },
-    'cheese': {
-      calories: 50,
-      weight: 25,
-      price: 3,
-    },
-    'bbq': {
-      calories: 50,
-      weight: 25,
-      price: 3,
-    },
-    'salsa': {
-      calories: 50,
-      weight: 25,
-      price: 3,
-    },
-    'sweet': {
-      calories: 50,
-      weight: 25,
-      price: 3,
-    },
-  }
-  constructor(dough, ...prod) {
-    super(dough);
-    this.productBasket = [];
-    this.sauce = [];
-    let prodBasket = prod.flat().filter((elem) => !Object.keys(this.pieSauce).includes(elem));
-
-    prod.forEach((elem) => {
-      if (Object.keys(this.pieSauce).includes(elem)) {
-        this.sauce = [elem, this.pieSauce[elem]]
-      }
-    })
-
-    prodBasket.forEach((elem) => {
-      if (Object.keys(this.pieProducts).includes(elem)) {
-        this.productBasket.push(elem, this.pieProducts[elem])
-      } else {
-        throw new Error('Wrong product, check .pieProduct for enabled types')
-      }
-    })
-  }
-
-  makePie() {
-    let pizza = {
-      'dough': this.dough,
-      'products': this.productBasket,
-      'sauce': this.sauce,
-    }
-    Pie.allPies.push(pizza);
-    return pizza;
-  }
-}
-
-
+/**
+ * Class Creating page, count price and hold information about all addition elements
+ */
 class PieSeller {
+  /** shows maximum extra value for prices
+   * @default
+   */
+  extra = 1.2;
+
+  /**Default dough types
+   * @default
+   * @inner
+   */
   pieDough = {
     'thin': {
       calories: 100,
@@ -229,6 +43,10 @@ class PieSeller {
       price: 17,
     },
   }
+  /**Default products types
+   * @default
+   * @inner
+   */
   pieProducts = {
     'pepper': {
       calories: 10,
@@ -276,6 +94,10 @@ class PieSeller {
       price: 0.5,
     },
   }
+  /**Default Sauce types
+   * @default
+   * @inner
+   */
   pieSauce = {
     'ketchup': {
       calories: 50,
@@ -308,11 +130,19 @@ class PieSeller {
       price: 3,
     },
   }
+  /**Constant object for making result block 
+   * @constant
+   * @inner
+   */
   pieResult = {
     dough: 'default',
     products: 'default',
     sauce: 'default',
   }
+  /**
+   * Takes info about Product, it's price, and energy value
+   * @constructor
+   */
   constructor() {
     this.pizza;
     this.price;
@@ -367,6 +197,7 @@ class PieSeller {
 
     button.classList.add('result-button');
     button.textContent = 'Buy Pizza';
+    button.disabled = true;
 
     summ.classList.add('result-summ')
     summ.textContent = `Final price: 0 $, Energy: 0 kcal`
@@ -396,7 +227,7 @@ class PieSeller {
     div.textContent = name;
     div.prepend(img);
     if (info) {
-      price.textContent = `Price: ${info.price} $`
+      price.textContent = `Price: ${Number((info.price * this.extra).toFixed(2))} $`
       energy.textContent = `Energy: ${info.calories} kcal`
       div.append(price);
       div.append(energy);
@@ -442,7 +273,6 @@ class PieSeller {
 
         if (e.target.closest('.type-block') && elem.querySelector('.type-block[data-active="active"]')) {
           let chosen = elem.querySelector('.type-block[data-active="active"]')
-          // console.dir(chosen)
           if (chosen.parentElement.classList.contains('dough')) {
             doughResult.dataset.active = 'load';
             doughResult.innerHTML = chosen.innerHTML;
@@ -460,6 +290,8 @@ class PieSeller {
 
         if (productResult.dataset.active == sauceResult.dataset.active && doughResult.dataset.active == 'load' && productResult.dataset.active == doughResult.dataset.active) {
           let summAndEnergy = this.showPrice();
+          let button = document.querySelector('.result-button');
+          button.disabled = false
           summBlock.textContent = `Final price: ${summAndEnergy[0]} $, Energy: ${summAndEnergy[1]} kcal`
         }
       })
@@ -490,12 +322,16 @@ class PieSeller {
   countBasePriceAndEnergy() {
     const result = document.querySelector('.result');
     let blocks = result.querySelectorAll('.type-block[data-active="load"]')
-    let prods = []
-    blocks.forEach((elem) => {
-      if (elem.childNodes[1]) {
-        prods.push(elem.childNodes[1].textContent)
-      }
-    })
+    let prods = [];
+    if (this.arguments) {
+      prods = this.arguments.flat()
+    } else {
+      blocks.forEach((elem) => {
+        if (elem.childNodes[1]) {
+          prods.push(elem.childNodes[1].textContent)
+        }
+      })
+    }
 
     let summ = this.pieDough[prods[0]].price +
       prods.slice(1, prods.length - 1).map((elem) => {
@@ -513,13 +349,13 @@ class PieSeller {
     const firstLimit = min;
     const secondLimit = max;
     let finalPrice;
-    if (basePrice < firstLimit) {
-      finalPrice = basePrice * 1.2;
+    if (basePrice <= firstLimit) {
+      finalPrice = basePrice * this.extra;
     }
     if (basePrice > firstLimit && basePrice < secondLimit) {
       finalPrice = basePrice * 1.15;
     }
-    if (basePrice > secondLimit) {
+    if (basePrice >= secondLimit) {
       finalPrice = basePrice * 1.1;
     }
     return (Math.ceil(finalPrice * 100) / 100).toFixed(2)
@@ -542,7 +378,7 @@ class PieSeller {
         prods.push(elem.childNodes[1].textContent);
       }
     })
-    this.pizza = new Sauce(prods[0], prods.slice(1, prods.length - 1), prods[prods.length - 1]);
+    this.pizza = new Pizza(prods[0], ...prods.slice(1, prods.length));
     this.savePizza(this.pizza, this.price, this.energy)
     this.cleaner();
   }
@@ -578,6 +414,7 @@ class PieSeller {
   cleaner() {
     const allActive = document.querySelectorAll(`.type-block[data-active="active"]`);
     const resultBlock = document.querySelector('.result');
+    const resultText = document.querySelector('.result-summ');
     const div = document.createElement('div');
     const names = Object.keys(this.pieResult);
     const title = document.querySelector('.pizzamaker-result .title')
@@ -593,28 +430,53 @@ class PieSeller {
     })
 
     resultBlock.remove();
+    document.querySelector('.result-button').disabled = true;
     title.after(div)
 
     this.pizza = undefined;
+    resultText.textContent = `Final price: 0 $, Energy: 0 kcal`
     console.log(PieSeller.allPies)
+  }
+  createConsolePie(dough, ...products) {
+    let consolePizza = new Pizza(dough, ...products)
+    let energyPrice = consolePizza.countBasePriceAndEnergy()
+    let price = this.makeFinalPrice(this.countMinMaxPrice(), energyPrice[0]);
+    let energy = energyPrice[1]
+    this.savePizza(consolePizza, price, energy);
   }
 
 }
 PieSeller.allPies = [];
+
+
+class Pizza extends PieSeller {
+  constructor(dough, ...products) {
+
+    super();
+    this.arguments = [dough, products].flat()
+    if (!Object.keys(this.pieDough).includes(dough)) {
+      throw new Error('Sorry, wrong dough type, try another or add new type')
+    } else {
+      this.dough = [dough, this.pieDough[dough]];
+    }
+
+    this.products = products.filter(elem => {
+      if (Object.keys(this.pieProducts).includes(elem)) {
+        return elem
+      } else if (!Object.keys(this.pieProducts).includes(elem) && !Object.keys(this.pieSauce).includes(elem)) {
+        throw new Error('Sorry, wrong product type, try another or add new type')
+      }
+    }).map(elem => [elem, this.pieProducts[elem]])
+    if (!Object.keys(this.pieSauce).includes(products[products.length - 1])) {
+      throw new Error('Sorry, wrong sauce type, try another or add new type')
+    } else {
+      this.sauce = [products[products.length - 1], this.pieSauce[products[products.length - 1]]];
+    }
+
+  }
+}
+
 let shop = new PieSeller();
-
 shop.openShop()
-
-// let pirog = new Pie('thin');
-// pirog.makePie()
-// console.log(pirog)
-
-// let basket = new Products('puff', 'ham', 'pineapple');
-// console.log(basket)
-// basket.makePie();
-
-// let saucy = new Sauce('thin', ['pepper', 'ketchup'])
-// saucy.makePie();
-// console.log(saucy)
-
-// console.log(Pie.allPies)
+shop.createConsolePie('italian', 'ham', 'pineapple', 'bbq')
+console.log(PieSeller.allPies, 'all pies')
