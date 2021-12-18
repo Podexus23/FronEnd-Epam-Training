@@ -151,7 +151,7 @@ class PieSeller {
   //page generator
   /**
    * Creating HTML page block by block
-   * @function
+   * @method
    */
   createShopPage() {
     this.createSelectionBlock("dough", this.pieDough)
@@ -162,7 +162,7 @@ class PieSeller {
   /**
    * Creating and append HTML article with info from object
    * using createTypeBlock() func for creating each block of article
-   * @function
+   * @method
    * @param {string} name prefix for classes
    * @param {object} obj block info with all names and values
    */
@@ -191,7 +191,7 @@ class PieSeller {
    * Same as createSelectionBlock(name, obj)
    * but have minor differences specially made for result block
    * such as adding button and info about counted results
-   * @function
+   * @method
    * @param {string} name prefix for classes
    * @param {object} obj premade obj for result blocks
    */
@@ -230,7 +230,7 @@ class PieSeller {
    * Creating block for articles according of type make class prefix
    * param1 destructured for those block that doesn't have info parameter, such as result blocks
    * key create data-active parameter, to divide different blocks and their functionality
-   * @function
+   * @method
    * @param {string} type class prefix 
    * @param {[string, obj || undefined]} param1 second prefix and top text content of block, 
    * second parameter is info about product or undefined for result blocks
@@ -263,7 +263,7 @@ class PieSeller {
   //making pie
   /**
    * Make visible chosen block between select articles and show them at result article
-   * @function
+   * @method
    */
   chooseIngredients() {
     this.selectBlock();
@@ -272,7 +272,7 @@ class PieSeller {
   /**
    * Make selected block visible between others
    * if it's product category several blocks can be chosen
-   * @function
+   * @method
    */
   selectBlock() {
     const wrappers = document.querySelectorAll('.wrapper');
@@ -300,7 +300,7 @@ class PieSeller {
    * Take info about chosen block and put the in result article,
    * use addToProductCart(), cuz of differences between quantity of selected blocks,
    * use showPrice(), to show result price and energy for chosen blocks
-   * @function
+   * @method
    */
   showResultBlock() {
     const wrappers = document.querySelectorAll('.wrapper');
@@ -340,7 +340,7 @@ class PieSeller {
   }
   /**
    * Used to create blocks for main result-product cart
-   * @function
+   * @method
    * @returns @returns {HTMLDivElement} div block with product class and inside info
    */
   addToProductCart() {
@@ -358,8 +358,12 @@ class PieSeller {
   }
   //make a purchase
   /**
-   * 
-   * @returns 
+   * Do all necessary calculations for counting result values and to show them on page
+   * use countBasePriceAndEnergy(), to find base values of items
+   * use countMinMaxPrice(), to make min and max bases for price discount
+   * and makeFinalPrice(base, summ) take base summ and extra modifier to count final price
+   * @method
+   * @returns {[string, number]} values of price and energy
    */
   showPrice() {
     let [summ, energy] = this.countBasePriceAndEnergy();
@@ -369,6 +373,13 @@ class PieSeller {
     this.energy = energy;
     return [this.makeFinalPrice(base, summ), energy]
   }
+  /**
+   * Take names of items, and count summ of their values.
+   * If it came through console, it takes arguments, if made by page it takes
+   * values of result blocks marked as data-active = "load"
+   * @method
+   * @returns {[number, number]} price base value and energy value
+   */
   countBasePriceAndEnergy() {
     const result = document.querySelector('.result');
     let blocks = result.querySelectorAll('.type-block[data-active="load"]')
@@ -392,9 +403,15 @@ class PieSeller {
       prods.slice(1, prods.length - 1).map((elem) => {
         return this.pieProducts[elem].calories
       }).reduce((a, b) => a + b) + this.pieSauce[prods[prods.length - 1]].calories;
-
     return [summ, energy]
   }
+  /**
+   * Take base summ of items and according to min and max prices for final product,
+   * choose modifier and return final price
+   * @param {[number, number]} param0 min and max possible prices for final product 
+   * @param {number} basePrice summ of all chosen products
+   * @returns {string} returns fixed price
+   */
   makeFinalPrice([min, max], basePrice) {
     const firstLimit = min;
     const secondLimit = max;
@@ -411,6 +428,11 @@ class PieSeller {
     return (Math.ceil(finalPrice * 100) / 100).toFixed(2)
   }
   //working page
+  /**
+   * Run main methods as createShopPage() to make HTML page
+   * and chooseIngredients() to activate all EventListeners
+   * also put event buyPie() on button, to finish deal and send data
+   */
   openShop() {
     this.createShopPage();
     this.chooseIngredients();
@@ -418,6 +440,12 @@ class PieSeller {
 
     button.addEventListener('click', this.buyPie.bind(this))
   }
+  /**
+   * Make final product - new Pizza()
+   * Save all data about selling product with savePizza()
+   * and clean result article by using cleaner() method
+   * @method
+   */
   buyPie() {
     const result = document.querySelector('.result');
 
@@ -433,6 +461,11 @@ class PieSeller {
     this.cleaner();
   }
   // supportive methods
+  /**
+   * Take one max and one min of each price value from Dough Products and sauce
+   * And count Higher and Lower price, to make limits for price modifiers
+   * @returns {[number, number]} minimal and maximal limit
+   */
   countMinMaxPrice() {
     let minProd, minType, minSauce;
     let maxProd, maxType, maxSauce;
@@ -458,10 +491,20 @@ class PieSeller {
     const maxCost = maxProd + maxType + maxSauce;
     return [minCost, maxCost];
   }
+  /**
+   * save data about sold products in array
+   * and send Data about sold Pizza to server sendData()
+   * @param  {...any} pie take all parameter, usually it's {[new Pizza, string, object]}
+   */
   savePizza(...pie) {
     this.sendData('https://jsonplaceholder.typicode.com/posts/', pie)
     PieSeller.allPies.push(pie)
   }
+  /**
+   * Renew page for making new deals;
+   * set data-active to "default";
+   * recreate result block;
+   */
   cleaner() {
     const allActive = document.querySelectorAll(`.type-block[data-active="active"]`);
     const resultBlock = document.querySelector('.result');
@@ -488,6 +531,11 @@ class PieSeller {
     resultText.textContent = `Final price: 0 $, Energy: 0 kcal`
     console.log(PieSeller.allPies)
   }
+  /**
+   * Made for testing and creating Pies through console.
+   * @param {string} dough 
+   * @param  {...string} products
+   */
   createConsolePie(dough, ...products) {
     let consolePizza = new Pizza(dough, ...products)
     let energyPrice = consolePizza.countBasePriceAndEnergy()
@@ -495,6 +543,11 @@ class PieSeller {
     let energy = energyPrice[1]
     this.savePizza(consolePizza, price, energy);
   }
+  /**
+   * Sending data about final product to chosen url
+   * @param {string} url address to send information
+   * @param {array} objPie all info about made product
+   */
   async sendData(url, objPie) {
     let response = await fetch(url, {
       method: 'POST',
@@ -511,10 +564,25 @@ class PieSeller {
     console.log(message)
   }
 }
+/** 
+ * Save here all made deals
+ * @param 
+ */
 PieSeller.allPies = [];
 
-
+/**
+ * Made to check validity
+ * @class
+ */
 class Pizza extends PieSeller {
+  /**
+   * take all arguments, and check their validity.
+   * if class includes this parameters, work goes on, else 
+   * @throws Error, which parameter is wrong
+   * @constructor
+   * @param {string} dough 
+   * @param  {[...string]} products 
+   */
   constructor(dough, ...products) {
 
     super();
@@ -545,4 +613,3 @@ let shop = new PieSeller();
 shop.openShop()
 shop.createConsolePie('italian', 'ham', 'pineapple', 'bbq')
 console.log(PieSeller.allPies, 'all pies')
-// shop.sendData(, PieSeller.allPies[0])
