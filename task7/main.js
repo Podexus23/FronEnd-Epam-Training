@@ -202,3 +202,20 @@ function drawHome() {
 drawFirst();
 drawSecond();
 drawHome();
+
+function openCloseCan() {
+  const field = document.querySelector('.trash-place');
+  const can = document.querySelector('.trash-can');
+
+  can.innerHTML = '<img src="./img/trash-can-with-cover.png" alt="">'
+  field.addEventListener('mouseover', (e) => {
+    if (e.target.closest('.trash-can')) {
+      can.innerHTML = '<img src="./img/open-trash-can.png" alt="">'
+    } else {
+      can.innerHTML = '<img src="./img/trash-can-with-cover.png" alt="">'
+    }
+  })
+
+}
+
+openCloseCan()
