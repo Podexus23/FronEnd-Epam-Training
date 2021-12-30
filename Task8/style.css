@@ -1,0 +1,13 @@
+.events {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-block,
+.events-status,
+.event-edit {
+  background: bisque;
+  border: 2px dashed #f78800;
+  padding: 2px;
+  margin: 1px;
+}
