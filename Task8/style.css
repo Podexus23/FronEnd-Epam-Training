@@ -1,6 +1,14 @@
+p {
+  margin: 2px;
+}
+
 .events {
   display: flex;
   flex-direction: column;
+}
+
+.event-block {
+  height: auto;
 }
 
 .event-block,
@@ -10,4 +18,9 @@
   border: 2px dashed #f78800;
   padding: 2px;
   margin: 1px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
 }

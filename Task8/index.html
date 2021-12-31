@@ -12,12 +12,33 @@
 <body>
   <div class="container">
     <div class="events">
-      <div class="event-block">First</div>
-      <div class="event-block">Second</div>
-      <div class="event-block">Third</div>
+      <div class="event-block" data-number="first">First</div>
+      <div class="event-block" data-number="second">Second</div>
+      <div class="event-block" data-number="third">Third</div>
     </div>
     <div class="events-status">Status</div>
-    <div class="event-edit">Edition</div>
+    <div class="event-edit">
+      <p>Edition</p>
+      <form class="edit-form" method="get">
+        <input type="date" name="date" id="date-event" required>
+        <input type="time" name="time" id="time-event">
+        <input type="text" name="title" id="title-event">
+        <select name="priority" id="priority-event">
+          <option value="low">low</option>
+          <option value="medium">medium</option>
+          <option value="top">top</option>
+        </select>
+        <input type="text" name="notes" id="notes-event">
+        <div class="event-submit">
+          <input type="radio" name="number" id="event-first" value="first" checked><label
+            for="event-first">First</label>
+          <input type="radio" name="number" id="event-second" value="second"><label for="event-second">Second</label>
+          <input type="radio" name="number" id="event-third" value="third"><label for="event-third">Third</label>
+        </div>
+
+      </form>
+      <button class="submit-button" type="submit">Submit as</button>
+    </div>
   </div>
   <script src="main.js"></script>
 </body>
