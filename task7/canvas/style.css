@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.first {
+  border: 1px solid black;
+}
+
+.second {
+  border: 1px solid black;
+}
+
+.honey-im-home {
+  border: 1px solid black;
+}
