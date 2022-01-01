@@ -1,4 +1,6 @@
 const form = document.querySelector('.edit-form');
+const ZAWARDO = 2000;
+let order = new Array(3);
 //main class that revert JSON to object and can create a block in HTML
 class Reverted {
   constructor(json) {
@@ -28,15 +30,23 @@ async function takeInfo(path) {
   return JSON.stringify(info)
 }
 //fill blocks with info taken from local files
-async function fillBlocks() {
+async function fillBlocksWithLocal() {
   let counter = 1;
   const events = document.querySelectorAll('.event-block');
 
+  // console.log(order)
   for (let event of events) {
+    let conductor;
     changeStatus(counter, "loading...")
-    let conductor = new Reverted(await takeInfo(`./json/your_name_data${counter}.json`))
+    if (order[counter - 1]) {
+      console.log(order[counter - 1])
+      conductor = order[counter - 1];
+    } else {
+      conductor = new Reverted(await takeInfo(`./json/your_name_data${counter}.json`))
+    }
+    // let conductor = new Reverted(await takeInfo(`./json/your_name_data${counter}.json`))
     let time = new Promise((resolve) => {
-      setTimeout(() => resolve(conductor), 3000)
+      setTimeout(() => resolve(conductor), ZAWARDO)
     })
     let smth = await time;
     // console.log(smth)
@@ -58,21 +68,26 @@ function parseEditionForm() {
   }
   return eventInfo
 }
-//change selected block with info from form
-function replaceBlock(revertClass, boxNumber) {
-  let box = document.querySelector(`.event-block[data-number="${boxNumber}"]`)
-  revertClass.constructBlock(box)
-}
 //search for checked radio and return it's number as text
-function checkedBlock() {
+function checkedBlock(type) {
   const radio = form.querySelector('.event-submit');
   const radioButtons = radio.querySelectorAll('input');
-
+  let counter = 0;
   let checked;
   for (let button of radioButtons) {
-    if (button.checked) checked = button;
+    if (!checked) {
+      counter++
+    }
+    if (button.checked) {
+      checked = button;
+    }
   }
-  return checked.value
+  if (type === 'value') {
+    return checked.value
+  }
+  if (type === 'number') {
+    return counter
+  }
 }
 //replacing info from form to chosen block
 const button = document.querySelector('.submit-button');
@@ -80,9 +95,8 @@ button.addEventListener('click', () => {
   let string = JSON.stringify(parseEditionForm())
   let demo = new Reverted(string);
 
-  replaceBlock(demo, checkedBlock())
+  putInOrder(demo, checkedBlock('number'))
   formCleaner()
-  console.log(demo, 'demo')
 })
 //check number of chosen block, and change it status text
 function changeStatus(num, text) {
@@ -99,16 +113,19 @@ function formCleaner() {
   form.reset();
 }
 //trying create a time machine
-let order = []
 
-function myNameIsDio() {
-  fillBlocks();
-
-
+async function myNameIsDio() {
+  let date = Date.now();
+  fillBlocksWithLocal();
+  setInterval(() => {
+    console.log((Date.now() - date) / 1000);
+    fillBlocksWithLocal();
+  }, ZAWARDO * 3);
 }
 
 myNameIsDio()
 
-function putInOrder(replaceFunc) {
-  // mn 
+function putInOrder(eventClass, radioNumber) {
+  order[radioNumber - 1] = eventClass;
+  console.log(eventClass, radioNumber)
 }
