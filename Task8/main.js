@@ -1,5 +1,5 @@
 const form = document.querySelector('.edit-form');
-const ZAWARDO = 5000;
+const ZAWARDO = 1000;
 let order = new Array(3);
 //main class that revert JSON to object and can create a block in HTML
 class Reverted {
@@ -112,10 +112,8 @@ function formCleaner() {
 //trying create a time machine
 
 async function myNameIsDio() {
-  let date = Date.now();
   fillBlocksWithLocal();
   setInterval(() => {
-    console.log((Date.now() - date) / 1000);
     fillBlocksWithLocal();
   }, ZAWARDO * 3);
 }
