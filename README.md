@@ -5,3 +5,7 @@
 - [Task 4: LESS](https://podexus23.github.io/FronEnd-Epam-Training/task4/index.html)
 - [Task 4: SASS](https://podexus23.github.io/FronEnd-Epam-Training/task4_SASS/index.html)
 - [Task 5: JS Basics](https://podexus23.github.io/FronEnd-Epam-Training/task%205/index.html)
+- [Task 6: JS Objects](https://podexus23.github.io/FronEnd-Epam-Training/task6/index.html)
+- [Task 7: JS Animation:Canvas](https://podexus23.github.io/FronEnd-Epam-Training/task7/canvas/index.html)
+- [Task 7: JS Animation:Trash can](https://podexus23.github.io/FronEnd-Epam-Training/task7/garbage/index.html)
+- [Task 8: JS Promise](https://podexus23.github.io/FronEnd-Epam-Training/Task8/index.html)
