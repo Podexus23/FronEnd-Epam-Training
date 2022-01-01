@@ -1,0 +1,66 @@
+p {
+  margin: 2px;
+}
+a {
+  color: black;
+}
+.events {
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.event-block,
+.events-status,
+.event-edit {
+  background: bisque;
+  border: 2px dashed #f78800;
+  padding: 2px;
+  margin: 1px;
+}
+
+.event-block {
+  height: auto;
+  width: 33%;
+  text-align: center;
+  padding: 5px;
+}
+
+.events-status {
+  display: flex;
+}
+
+.events-status .status-block {
+  width: 33%;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-text {
+  color: red;
+}
+
+.active {
+  color: green;
+}
+
+.save-button {
+  border: 1.5px solid #dc7777;
+  background: white;
+  border-radius: 5px;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 0.7rem;
+  padding: 2px 4px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.save-button:hover {
+  background: rgb(255, 122, 122);
+}
+.save-button:active {
+  background: rgba(255, 122, 122, 0.7);
+}
