@@ -4,11 +4,12 @@ p {
 
 .events {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
 .event-block {
   height: auto;
+  width: 33%;
 }
 
 .event-block,
@@ -20,7 +21,23 @@ p {
   margin: 1px;
 }
 
+.events-status {
+  display: flex;
+}
+
+.events-status .status-block {
+  width: 33%;
+}
+
 .edit-form {
   display: flex;
   flex-direction: column;
+}
+
+.status-text {
+  color: red;
+}
+
+.active {
+  color: green;
 }
