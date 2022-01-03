@@ -1,0 +1,24 @@
+{
+  "name": "intro",
+  "version": "1.0.0",
+  "description": "Node JS Intro task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Podexus23/FronEnd-Epam-Training.git"
+  },
+  "author": "Serovski Anton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Podexus23/FronEnd-Epam-Training/issues"
+  },
+  "homepage": "https://github.com/Podexus23/FronEnd-Epam-Training#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
