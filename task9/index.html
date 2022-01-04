@@ -13,26 +13,26 @@
   <h2>Students</h2>
 
   <section class="main-container">
-    <form action="/add-student" class="student-form" method="post">
+    <form action="/student" class="student-form" method="POST">
       <label for="id">ID</label>
-      <input type="number" name="id" id="id">
+      <input type="number" name="id" id="id" required>
       <label for="firstName">Name</label>
-      <input type="text" name="firstName" id="firstName">
+      <input type="text" name="firstName" id="firstName" required>
       <label for="secondName">Second Name</label>
       <input type="text" name="secondName" id="secondName">
       <label for="age">Age</label>
       <input type="number" name="age" id="age">
-      <label for="speciality">Speciality</label>
-      <input type="text" name="speciality" id="speciality">
+      <label for="speciality">Specialty</label>
+      <input type="text" name="specialty" id="specialty" required>
       <div class="controls">
-        <button>Prev</button>
+        <input type="button" value="Prev" class="prev-button">
         <button type="submit" class="submit-button">Add</button>
-        <button>Edit</button>
-        <button>Remove</button>
-        <button>Next</button>
-
+        <input type="button" value="Remove" class="remove-button">
+        <input type="button" value="Edit" class="edit-button">
+        <input type="button" value="Next" class="next-button">
       </div>
     </form>
+
 
     </main>
     <script src="main.js"></script>

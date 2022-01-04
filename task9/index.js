@@ -1,42 +1,93 @@
 let students = require("./json/students.json")
-const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const port = 3000;
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const server = http.createServer((req, res) => {
+const {
+  request
+} = require("http");
+const {
+  response
+} = require("express");
+const filePath = path.join(__dirname, 'json', 'students.json');
 
-  let filePath = path.join(__dirname, req.url === "/" ? 'index.html' : req.url)
-  console.log(req.url)
-  const ext = path.extname(filePath);
-  let contentType = 'text/html';
+let app = express();
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json())
+app.use(express.static(__dirname + '/'));
 
-  switch (ext) {
-    case '.css':
-      contentType = "text/css"
-      break
-    case '.js':
-      contentType = 'text/javascript'
-      break
-    default:
-      contentType = 'text/html'
-  }
+app.get('/', (request, response) => {
+  response.sendFile(__dirname + '/index.html')
+})
 
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      throw err
-    } else {
-      res.writeHead(200, {
-        'Content-Type': contentType
+app.post('/student', (req, res) => {
+
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) throw err;
+    let array = JSON.parse(data);
+    array.push(req.body);
+    array = JSON.stringify(array);
+    fs.writeFile(filePath, array, (err) => {
+      if (err) throw err;
+      console.log('data loaded')
+    })
+  })
+  res.redirect('/');
+})
+
+app.delete('/student', (req, res) => {
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) throw err;
+    const id = req.body.id;
+    console.log(req.body.id)
+    let array = JSON.parse(data);
+    array = JSON.stringify(array.filter((elem) => elem.id != id));
+    fs.writeFile(filePath, array, (err) => {
+      if (err) throw err;
+      console.log('data loaded')
+    })
+  })
+  console.log('deleted')
+  res.redirect('/');
+})
+
+app.put('/student', (req, res) => {
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) throw err;
+    const id = req.body.id;
+    let array = JSON.parse(data);
+    if (array.some(e => e.id == id))
+      array = array.map((elem) => {
+        if (elem.id === id) {
+          return req.body;
+        } else return elem
       })
-
-      // let text = Buffer.from(req)
-      res.end(content)
-    }
+    array = JSON.stringify(array);
+    fs.writeFile(filePath, array, (err) => {
+      if (err) throw err;
+      console.log('data loaded')
+    })
+  })
+  res.redirect('/');
+})
+app.get('/:id', (req, res) => {
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) throw err;
+    let obj = JSON.parse(data);
+    let student;
+    obj.forEach((elem) => {
+      console.log(elem)
+      if (elem.id == req.params.id) {
+        student = elem;
+      }
+    })
+    console.log(student)
+    res.send(JSON.stringify(student));
   })
 })
 
-const PORT = process.env.PORT || 3000;
-
-server.listen(PORT, () => {
-  console.log(`Server has been started on ${PORT}`)
-});
+app.listen(port)
