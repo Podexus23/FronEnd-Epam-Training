@@ -1,10 +1,11 @@
 class Student {
-  constructor() {
-    this.id;
-    this.firstName;
-    this.secondName;
-    this.age;
-    this.specialty;
+  constructor(json) {
+    this.obj = JSON.parse(json);
+    this.id = this.obj.id;
+    this.firstName = this.obj.firstName;
+    this.secondName = this.obj.secondName;
+    this.age = this.obj.age;
+    this.specialty = this.obj.specialty;
   }
 }
 const addButton = document.querySelector('.submit-button');
@@ -12,6 +13,24 @@ const removeButton = document.querySelector('.remove-button');
 const editButton = document.querySelector('.edit-button');
 const prevButton = document.querySelector('.prev-button');
 const nextButton = document.querySelector('.next-button');
+const inputID = document.querySelector('#id')
+
+function fullForm(obj) {
+  const form = document.querySelector('form');
+  if (obj.firstName == "ID is empty") {
+    form[0].value = obj.id;
+    form[1].value = obj.firstName;
+    form[2].value = '';
+    form[3].value = '';
+    form[4].value = '';
+  } else {
+    form[0].value = obj.id;
+    form[1].value = obj.firstName;
+    form[2].value = obj.secondName;
+    form[3].value = obj.age;
+    form[4].value = obj.specialty;
+  }
+}
 
 async function addNewStudent() {
   const form = document.querySelector('.student-form');
@@ -85,13 +104,12 @@ async function editStudent() {
 async function prevStudent() {
   const form = document.querySelector('.student-form');
   if (form[0].validity.valid) {
-
-    const url = form[0].value
+    const url = form[0].value - 1
     let data = await fetch(url, {
       method: 'GET'
     });
     let confo = await data.json();
-    console.log(confo);
+    fullForm(confo);
   } else {
     console.log('not valid')
   }
@@ -100,17 +118,18 @@ async function prevStudent() {
 async function nextStudent() {
   const form = document.querySelector('.student-form');
   if (form[0].validity.valid) {
-
-    const url = form[0].value
+    const url = +form[0].value + 1;
     let data = await fetch(url, {
       method: 'GET'
     });
     let confo = await data.json();
-    console.log(confo);
+    fullForm(confo);
   } else {
     console.log('not valid')
   }
 }
+
+
 addButton.addEventListener('click', addNewStudent);
 removeButton.addEventListener('click', removeStudent);
 editButton.addEventListener('click', editStudent);
