@@ -1,19 +1,29 @@
-class Student {
-  constructor(json) {
-    this.obj = JSON.parse(json);
-    this.id = this.obj.id;
-    this.firstName = this.obj.firstName;
-    this.secondName = this.obj.secondName;
-    this.age = this.obj.age;
-    this.specialty = this.obj.specialty;
-  }
-}
 const addButton = document.querySelector('.submit-button');
 const removeButton = document.querySelector('.remove-button');
 const editButton = document.querySelector('.edit-button');
 const prevButton = document.querySelector('.prev-button');
 const nextButton = document.querySelector('.next-button');
 const inputID = document.querySelector('#id')
+
+class Student {
+  constructor(obj) {
+    if (typeof obj == 'string') {
+      this.obj = JSON.parse(json);
+      this.id = this.obj.id;
+      this.firstName = this.obj.firstName;
+      this.secondName = this.obj.secondName;
+      this.age = this.obj.age;
+      this.specialty = this.obj.specialty;
+    } else {
+      this.id = obj.id;
+      this.firstName = obj.firstName;
+      this.secondName = obj.secondName
+      this.age = obj.age;
+      this.specialty = obj.specialty;
+    }
+  }
+}
+
 
 function fullForm(obj) {
   const form = document.querySelector('form');
@@ -37,18 +47,18 @@ async function addNewStudent() {
   if (form[0].validity.valid &&
     form[1].validity.valid &&
     form[4].validity.valid) {
-    let obj = {
+    let newbie = new Student({
       id: form[0].value,
       firstName: form[1].value,
       secondName: form[2].value,
       age: form[3].value,
       specialty: form[4].value,
-    }
+    })
     form.reset();
     const url = '/student'
     await fetch(url, {
       method: 'POST',
-      body: JSON.stringify(obj),
+      body: JSON.stringify(newbie),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -79,18 +89,18 @@ async function removeStudent() {
 async function editStudent() {
   const form = document.querySelector('.student-form');
   if (form[0].validity.valid) {
-    let obj = {
+    let newbie = new Student({
       id: form[0].value,
       firstName: form[1].value,
       secondName: form[2].value,
       age: form[3].value,
       specialty: form[4].value,
-    }
+    })
     form.reset();
     const url = '/student'
     await fetch(url, {
       method: 'PUT',
-      body: JSON.stringify(obj),
+      body: JSON.stringify(newbie),
       headers: {
         'Content-Type': 'application/json'
       }

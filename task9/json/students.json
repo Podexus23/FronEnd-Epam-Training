@@ -1,1 +1,67 @@
-[{"id":"2","firstName":"James","secondName":"McAvoy","age":"42","specialty":"Actor"},{"id":"3","firstName":"Anton","secondName":"Podex","age":"29","specialty":"unemployed"},{"id":"4","firstName":"Vlad","secondName":"Burdos","age":"28","specialty":"Friend of Anton"},{"id":"6","firstName":"","secondName":"McAvoy","age":"","specialty":""},{"id":"7","firstName":"","secondName":"","age":"","specialty":"Friend of Anton"},{"id":"8","firstName":"Oleg","secondName":"","age":"","specialty":"OLeg"},{"id":"9","firstName":"4eburashka","secondName":"","age":"3","specialty":"Бегать с крокодилом"},{"id":"10","firstName":"Barabas","secondName":"","age":"100","specialty":"Scaring"},{"id":"12","firstName":"Some","secondName":"Name","age":"102","specialty":"Just Man"}]
+[{
+  "id": "2",
+  "firstName": "James",
+  "secondName": "McAvoy",
+  "age": "42",
+  "specialty": "Actor"
+}, {
+  "id": "3",
+  "firstName": "Anton",
+  "secondName": "Podex",
+  "age": "29",
+  "specialty": "unemployed"
+}, {
+  "id": "4",
+  "firstName": "Vlad",
+  "secondName": "Burdos",
+  "age": "28",
+  "specialty": "Friend of Anton"
+}, {
+  "id": "6",
+  "firstName": "",
+  "secondName": "McAvoy",
+  "age": "",
+  "specialty": ""
+}, {
+  "id": "7",
+  "firstName": "",
+  "secondName": "",
+  "age": "",
+  "specialty": "Friend of Anton"
+}, {
+  "id": "8",
+  "firstName": "Oleg",
+  "secondName": "",
+  "age": "",
+  "specialty": "OLeg"
+}, {
+  "id": "9",
+  "firstName": "4eburashka",
+  "secondName": "",
+  "age": "3",
+  "specialty": "Бегать с крокодилом"
+}, {
+  "id": "10",
+  "firstName": "Barabas",
+  "secondName": "",
+  "age": "100",
+  "specialty": "Scaring"
+}, {
+  "id": "12",
+  "firstName": "Some",
+  "secondName": "Name",
+  "age": "102",
+  "specialty": "Just Man"
+}, {
+  "id": "1",
+  "firstName": "James",
+  "secondName": "",
+  "age": "45",
+  "specialty": "Batman"
+}, {
+  "id": "13",
+  "firstName": "Class",
+  "secondName": "mate",
+  "age": "10",
+  "specialty": "class"
+}]
