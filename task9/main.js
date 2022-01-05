@@ -34,7 +34,9 @@ function fullForm(obj) {
 
 async function addNewStudent() {
   const form = document.querySelector('.student-form');
-  if (form[0].validity.valid) {
+  if (form[0].validity.valid &&
+    form[1].validity.valid &&
+    form[4].validity.valid) {
     let obj = {
       id: form[0].value,
       firstName: form[1].value,
@@ -42,7 +44,6 @@ async function addNewStudent() {
       age: form[3].value,
       specialty: form[4].value,
     }
-    console.log(obj);
     form.reset();
     const url = '/student'
     await fetch(url, {
@@ -62,7 +63,6 @@ async function removeStudent() {
     let id = {
       "id": form[0].value
     };
-    console.log(id);
     form.reset();
     const url = '/student'
     await fetch(url, {
@@ -86,7 +86,6 @@ async function editStudent() {
       age: form[3].value,
       specialty: form[4].value,
     }
-    console.log(obj);
     form.reset();
     const url = '/student'
     await fetch(url, {
@@ -104,7 +103,8 @@ async function editStudent() {
 async function prevStudent() {
   const form = document.querySelector('.student-form');
   if (form[0].validity.valid) {
-    const url = form[0].value - 1
+    const url = form[0].value - 1;
+    await disableButtons(url);
     let data = await fetch(url, {
       method: 'GET'
     });
@@ -119,6 +119,21 @@ async function nextStudent() {
   const form = document.querySelector('.student-form');
   if (form[0].validity.valid) {
     const url = +form[0].value + 1;
+    await disableButtons(url);
+    let data = await fetch(url, {
+      method: 'GET'
+    });
+    let confo = await data.json();
+    fullForm(confo);
+  } else {
+    console.log('not valid')
+  }
+}
+async function onChange() {
+  const form = document.querySelector('.student-form');
+  if (form[0].validity.valid) {
+    const url = +form[0].value;
+    await disableButtons(url);
     let data = await fetch(url, {
       method: 'GET'
     });
@@ -129,9 +144,23 @@ async function nextStudent() {
   }
 }
 
-
 addButton.addEventListener('click', addNewStudent);
 removeButton.addEventListener('click', removeStudent);
 editButton.addEventListener('click', editStudent);
 prevButton.addEventListener('click', prevStudent);
 nextButton.addEventListener('click', nextStudent);
+inputID.addEventListener('input', onChange);
+
+async function disableButtons(id) {
+  const buttons = document.querySelectorAll('.controls input');
+  let array = Array.from(buttons);
+  const url = `/check/${id}`
+  let idCheck = await fetch(url, {
+    method: 'GET'
+  })
+  let json = await idCheck.json();
+  let checkerArray = Object.values(json)
+  array.map((elem, index) => {
+    elem.disabled = checkerArray[index];
+  })
+}

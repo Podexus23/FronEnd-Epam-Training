@@ -81,9 +81,12 @@ app.get('/:id', (req, res) => {
     let ids = obj.map(elem => elem.id)
     let min = Math.min(...ids);
     let max = Math.max(...ids);
-    if (number < min) number = max;
-    if (number > max) number = min;
-    if (!ids.includes(number) && number < max && number > min) {
+    if (!ids.includes(number) && number < max && number > 0) {
+      res.send(JSON.stringify({
+        id: req.params.id,
+        firstName: 'ID is empty'
+      }))
+    } else if (!ids.includes(number) && number > max) {
       res.send(JSON.stringify({
         id: req.params.id,
         firstName: 'ID is empty'
@@ -97,8 +100,36 @@ app.get('/:id', (req, res) => {
       })
       res.send(JSON.stringify(student));
     }
-
   })
 })
+app.get('/check/:id', (req, res) => {
+  fs.readFile(filePath, 'utf-8', (err, data) => {
+    if (err) throw err;
+    const array = JSON.parse(data);
+    const id = req.params.id;
+    let buttons = {
+      prev: false,
+      add: false,
+      remove: false,
+      edit: false,
+      next: false,
+    }
+    let ids = array.map(elem => elem.id)
+    let min = Math.min(...ids);
+    let max = Math.max(...ids);
 
+    if (id == min) buttons.prev = true;
+    if (id == max) buttons.next = true;
+    if (ids.includes(id)) buttons.add = true;
+    if (!ids.includes(id)) {
+      buttons.edit = true;
+      buttons.remove = true;
+    }
+    if (!ids.includes(id) && id > max) {
+      buttons.prev = true;
+      buttons.next = true;
+    }
+    res.send(JSON.stringify(buttons))
+  })
+})
 app.listen(port)
